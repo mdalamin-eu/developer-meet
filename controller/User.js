@@ -82,6 +82,29 @@ AWS.config.update({
                 res.status(404).send({
                     'message':'invalid token'
                 })
+            }//destructuring kora hocce 
+            const {name, email, password, avatar, phone, date} = jwt.decode(token)
+            try{
+                const existUser=await User.findOne({email})
+                if(existUser){
+                    return res.status(400).send({
+                        'message':'User token allready taken'
+                    })
+                }
+                const user = new User({
+                    name, email, password, avatar, phone, date
+                })
+                user.save((err, newUser=>{
+                    if(err){
+                        console.log(err)
+                    }
+                    return res.status(200).send({
+                        'message':'You are registerd'
+                    })
+                }))
+            }
+            catch(error){
+                console.log(error)
             }
         })
     }
