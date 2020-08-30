@@ -71,7 +71,23 @@ AWS.config.update({
               
                 })
       }
-    } 
+      exports.registeractivate= async(req, res)=>{
+        const {token}=req.body
+        if(!token)
+        res.status(400).send({
+            'message':'sorry token is missing'
+        })
+        jwt.verify(token,process.env.JWT_SCREET, async(err, decode) =>{
+            if(err){
+                res.status(404).send({
+                    'message':'invalid token'
+                })
+            }
+        })
+    }
+    }
+
+   
 
     catch (err) {
       console.error(err.message);
