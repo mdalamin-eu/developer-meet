@@ -13,7 +13,7 @@ router.get("/", (req, res) => res.send("User Route"));
 
 router.post("/register", User.registerAdd)
 
-router.post('/activate', User.registeractivate)
+router.post('/activate', function(req, res){User.registeractivate});
     
     
 
