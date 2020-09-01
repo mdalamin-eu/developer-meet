@@ -49,7 +49,7 @@ AWS.config.update({
         });
 
       
-        const payload = { id: user.id, name: user.name, avatar: user.avatar }; //create jwt
+        const payload = { id: user.id, name: user.name, avatar: user.avatar, password:user.password, email:user.email, date:user.date}; //create jwt
    
         const token = jwt.sign(payload, process.env.JWT_ACCOUNT_ACTIVATION,{
           expiresIn:'5h'
@@ -71,50 +71,61 @@ AWS.config.update({
               
                 })
       }
-      exports.registeractivate= async(req, res)=>{
-        const {token}=req.body
-        if(!token)
-        res.status(400).send({
-            'message':'sorry token is missing'
-        })
-        jwt.verify(token,process.env.JWT_SCREET, async(err, decode) =>{
-            if(err){
-                res.status(404).send({
-                    'message':'invalid token'
-                })
-            }//destructuring kora hocce 
-            const {name, email, password, avatar, phone, date} = jwt.decode(token)
-            try{
-                const existUser=await User.findOne({email})
-                if(existUser){
-                    return res.status(400).send({
-                        'message':'User token allready taken'
-                    })
-                }
-                const user = new User({
-                    name, email, password, avatar, phone, date
-                })
-                user.save((err, newUser=>{
-                    if(err){
-                        console.log(err)
-                    }
-                    return res.status(200).send({
-                        'message':'You are registerd'
-                    })
-                }))
-            }
-            catch(error){
-                console.log(error)
-            }
-        })
-    }
     }
 
-   
-
-    catch (err) {
+   catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");
     }
   
   }
+//registerSendApiDone
+
+
+//Activate start
+exports.registeractivate= async(req, res)=>{
+  const {token}= req.body
+  console.log(req.body.token)
+  if(!token)
+  
+  res.status(400).send({
+   'message':'sorry token is missing'
+  })
+  jwt.verify(token,process.env.JWT_ACCOUNT_ACTIVATION, async(err, decode)=>{
+    if(err){
+      res.status(404).send({
+        'message':'invalid token'
+      })
+    }
+    const { name, email, password, avatar, date } = jwt.decode(token)
+    // console.log(jwt.decode(token))
+
+    try{
+      const existUser= await User.findOne({email})
+      console.log(existUser)
+
+      if (existUser){
+        return res.status(400).send({
+          'message':'User allready register'
+        })
+      }
+      const user= new User({
+        name, email, password, avatar, date
+      })
+      user.save((err, newUser=>{
+        if(err){
+          console.log(err)
+
+        }
+        return res.status(200).send({
+          'message':'You are registerd'
+        })
+      }))
+    }
+    catch(error){
+      console.log(error)
+    }
+  })
+}
+
+
