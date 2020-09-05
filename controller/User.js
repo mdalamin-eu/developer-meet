@@ -129,3 +129,41 @@ exports.registeractivate= async(req, res)=>{
 }
 
 
+//LoginFrom 
+
+exports.Login = async (req, res)=>{
+  const {email, password} = req.body
+
+  try{
+    const findUser = await User.findOne({email})
+
+    if(!findUser){
+      res.status(404).send({
+        'message':"Sorry user not found register first"
+      })
+    }
+    const isMatch = await bcrypt.compare(password,findUser. hashpassword)
+    if(!isMatch){
+      res.status(400).send({
+        'message':'Sorry password did not matched'
+      })
+    }
+
+    const user = {id:findUser.id, lastname:findUser.lastname, email:findUser.email, loggedin:true}
+    jwt.sign(user, process.env.JWT_SCREET,{expiresIn:'1h'},(err, token) => {
+      if(err){
+        res.status(500).send({
+          'message':"Something went wrong"
+        })
+      }
+      res.status(200).send({
+        user, 
+        token
+      })
+    })
+  } catch(error){
+
+  }
+}
+
+
