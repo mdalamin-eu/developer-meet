@@ -25,7 +25,7 @@ AWS.config.update({
     }
   
 
-    const { name, email, password } = req.body;
+    const { name, email, password, phone } = req.body;
     
 
     try {
@@ -45,11 +45,12 @@ AWS.config.update({
           name,
           email,
           password,
-          avatar
+          avatar,
+          phone
         });
 
       
-        const payload = { id: user.id, name: user.name, avatar: user.avatar, password:user.password, email:user.email, date:user.date}; //create jwt
+        const payload = { id: user.id, name: user.name, avatar: user.avatar, password:user.password, phone:user.phone, email:user.email, date:user.date}; //create jwt
    
         const token = jwt.sign(payload, process.env.JWT_ACCOUNT_ACTIVATION,{
           expiresIn:'5h'
@@ -97,7 +98,7 @@ exports.registeractivate= async(req, res)=>{
         'message':'invalid token'
       })
     }
-    const { name, email, password, avatar, date } = jwt.decode(token)
+    const { name, email, phone, password, avatar, date } = jwt.decode(token)
     // console.log(jwt.decode(token))
 
     try{
@@ -110,16 +111,26 @@ exports.registeractivate= async(req, res)=>{
         })
       }
       const user= new User({
-        name, email, password, avatar, date
+        name, email, phone,  password, avatar, date
       })
+      
+      
+      
       user.save((err, newUser=>{
         if(err){
           console.log(err)
 
         }
-        return res.status(200).send({
-          'message':'You are registerd'
-        })
+        const payload = { id: user.id, name: user.name, avatar: user.avatar, user:email }; //create jwt
+
+        jwt.sign(payload, process.env.JWT_ACCOUNT_ACTIVATION, { expiresIn: 360000 }, (err, token) => {
+          if (err) throw err;
+          res.json({ 
+            'message':'You are registerd',
+            token
+           });
+        });
+      
       }))
     }
     catch(error){
@@ -136,21 +147,25 @@ exports.Login = async (req, res)=>{
 
   try{
     const findUser = await User.findOne({email})
-
+    console.log(email)
     if(!findUser){
       res.status(404).send({
         'message':"Sorry user not found register first"
+
       })
+      
     }
-    const isMatch = await bcrypt.compare(password,findUser. hashpassword)
-    if(!isMatch){
+    console.log(findUser)
+
+    if(findUser.password !== password){
       res.status(400).send({
         'message':'Sorry password did not matched'
       })
     }
 
-    const user = {id:findUser.id, lastname:findUser.lastname, email:findUser.email, loggedin:true}
-    jwt.sign(user, process.env.JWT_SCREET,{expiresIn:'1h'},(err, token) => {
+    const user = {id:findUser.id, name:findUser.name, email:findUser.email, loggedin:true}
+    console.log(user)
+    jwt.sign(user, process.env.JWT_ACCOUNT_ACTIVATION,{expiresIn:'1h'},(err, token) => {
       if(err){
         res.status(500).send({
           'message':"Something went wrong"
@@ -167,3 +182,11 @@ exports.Login = async (req, res)=>{
 }
 
 
+exports.auth =  async (req, res)=>{
+try {
+  const user = await User.findById(req.currentuser.id)
+  res.json(user)
+} catch (error) {
+  res.status(500).json({msg:"Server Errors"})
+}
+}
