@@ -3,6 +3,7 @@ const AWS = require('aws-sdk')
 const User = require('../models/User')
 const gravatar = require("gravatar");
 const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs")
 const {registerUserEmail} = require('../helper/sendEmail')
 const { check, validationResult } = require("express-validator/check");
 
@@ -49,6 +50,9 @@ AWS.config.update({
           phone
         });
 
+        const salt= await bcrypt.genSalt(10)
+        user.password= await bcrypt.hash(password, salt)
+        console.log(user.password)
       
         const payload = { id: user.id, name: user.name, avatar: user.avatar, password:user.password, phone:user.phone, email:user.email, date:user.date}; //create jwt
    
