@@ -52,7 +52,7 @@ AWS.config.update({
 
         const salt= await bcrypt.genSalt(10)
         user.password= await bcrypt.hash(password, salt)
-        console.log(user.password)
+        console.log(user.phone)
       
         const payload = { id: user.id, name: user.name, avatar: user.avatar, password:user.password, phone:user.phone, email:user.email, date:user.date}; //create jwt
    
@@ -87,6 +87,12 @@ AWS.config.update({
 //registerSendApiDone
 
 
+
+
+
+
+
+
 //Activate start
 exports.registeractivate= async(req, res)=>{
   const {token}= req.body
@@ -103,6 +109,7 @@ exports.registeractivate= async(req, res)=>{
       })
     }
     const { name, email, phone, password, avatar, date } = jwt.decode(token)
+    console.log('simnumber', phone)
     // console.log(jwt.decode(token))
 
     try{
@@ -122,9 +129,11 @@ exports.registeractivate= async(req, res)=>{
       
       user.save((err, newUser=>{
         if(err){
-          console.log(err)
+          res.send(err)
+          // console.log(err)
 
         }
+        console.log('usernew', newUser)
         const payload = { id: user.id, name: user.name, avatar: user.avatar, user:email }; //create jwt
 
         jwt.sign(payload, process.env.JWT_ACCOUNT_ACTIVATION, { expiresIn: 360000 }, (err, token) => {
@@ -144,6 +153,11 @@ exports.registeractivate= async(req, res)=>{
 }
 
 
+
+
+
+
+
 //LoginFrom 
 
 exports.Login = async (req, res)=>{
@@ -151,7 +165,7 @@ exports.Login = async (req, res)=>{
 
   try{
     const findUser = await User.findOne({email})
-    console.log(email)
+    console.log('UserLogin',findUser)
     if(!findUser){
       res.status(404).send({
         'message':"Sorry user not found register first"
@@ -159,9 +173,13 @@ exports.Login = async (req, res)=>{
       })
       
     }
-    console.log(findUser)
+    console.log('kkkk',password,findUser.password)
 
-    if(findUser.password !== password){
+ const isMatch= await bcrypt.compare(password, findUser.password)
+ console.log('gggg',isMatch)
+ if(!isMatch){
+  
+    //if(findUser.password !== password){
       res.status(400).send({
         'message':'Sorry password did not matched'
       })
