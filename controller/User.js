@@ -187,7 +187,7 @@ exports.Login = async (req, res)=>{
 
     const user = {id:findUser.id, name:findUser.name, email:findUser.email, loggedin:true}
     console.log(user)
-    jwt.sign(user, process.env.JWT_ACCOUNT_ACTIVATION,{expiresIn:'1h'},(err, token) => {
+    jwt.sign(user, process.env.JWT_RESET_PASSWORD,{expiresIn:'1h'},(err, token) => {
       if(err){
         res.status(500).send({
           'message':"Something went wrong"
@@ -212,3 +212,104 @@ try {
   res.status(500).json({msg:"Server Errors"})
 }
 }
+
+
+
+
+// reset password
+exports.resetpassword= async(req, res)=>{
+  const {token, password}= req.body
+  console.log('tokenno1', token)
+  if(!token)
+  
+  res.status(400).send({
+   'message':'sorry token is missing'
+  })
+  jwt.verify(token,process.env.JWT_RESET_PASSWORD, async(err, decode)=>{
+    if(err){
+      res.status(404).send({
+        'message':'invalid token'
+      })
+    }
+    const {email } = jwt.decode(token)
+    
+    // console.log(jwt.decode(token))
+
+    try{
+      const existUser= await User.findOne({email})
+      console.log(existUser)
+
+      if (!existUser){
+        return res.status(400).send({
+          'message':'somethign went wrong'
+        })
+      }
+    
+      existUser.set(password)
+      existUser.save((err, newpassword=>{
+        if(err){
+          res.send(err)
+          // console.log(err)
+        }
+      }))
+    }
+    catch(error){
+      console.log(error)
+    }
+  })
+}
+
+
+exports.resetpasswordemailsend= 
+async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+
+  const { email } = req.body;
+  
+
+  try {
+    let user = await User.findOne({ email });
+
+    if (!user) {
+      return res
+        .status(400)
+        .json({ errors: [{ msg: "User not registerd" }] });
+    } 
+    
+    else {
+
+      const payload = { email:user.email}; //create jwt
+ 
+      const token = jwt.sign(payload, process.env.JWT_RESET_PASSWORD,{
+        expiresIn:'5h'
+      })
+         //Send email
+         const params = registerUserEmail(token, email)         
+         const sendEmailOnRegister = ses.sendEmail(params).promise();
+         sendEmailOnRegister.then(data => {
+         
+            res.json({
+              message:`Email has been sent to ${email}, Follow the instructions to compelete your reset password`
+            })
+             
+            }).catch(error =>{
+              
+               res.json({
+                 message:'something went wrong please try again'
+               })
+            
+              })
+    }
+  }
+
+ catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+
+}
+

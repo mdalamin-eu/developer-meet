@@ -15,6 +15,8 @@ router.post("/register", User.registerAdd)
 router.post('/login', User.Login)
 router.post('/activate', User.registeractivate);
 router.get('/current',AuthGuard, User.auth);
+router.post('/reset-password', User.resetpasswordemailsend)
+router.patch('/enterpassword', User.resetpassword)
     
 
 module.exports = router;
