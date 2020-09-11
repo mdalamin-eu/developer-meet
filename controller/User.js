@@ -136,7 +136,7 @@ exports.registeractivate= async(req, res)=>{
         console.log('usernew', newUser)
         const payload = { id: user.id, name: user.name, avatar: user.avatar, user:email }; //create jwt
 
-        jwt.sign(payload, process.env.JWT_ACCOUNT_ACTIVATION, { expiresIn: 360000 }, (err, token) => {
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 360000 }, (err, token) => {
           if (err) throw err;
           res.json({ 
             'message':'You are registerd',
@@ -173,10 +173,10 @@ exports.Login = async (req, res)=>{
       })
       
     }
-    console.log('kkkk',password,findUser.password)
+
 
  const isMatch= await bcrypt.compare(password, findUser.password)
- console.log('gggg',isMatch)
+
  if(!isMatch){
   
     //if(findUser.password !== password){
@@ -187,7 +187,7 @@ exports.Login = async (req, res)=>{
 
     const user = {id:findUser.id, name:findUser.name, email:findUser.email, loggedin:true}
     console.log(user)
-    jwt.sign(user, process.env.JWT_RESET_PASSWORD,{expiresIn:'1h'},(err, token) => {
+    jwt.sign(user, process.env.JWT_SECRET,{expiresIn:'1h'},(err, token) => {
       if(err){
         res.status(500).send({
           'message':"Something went wrong"
@@ -202,8 +202,6 @@ exports.Login = async (req, res)=>{
 
   }
 }
-
-
 exports.auth =  async (req, res)=>{
 try {
   const user = await User.findById(req.currentuser.id)
@@ -212,65 +210,13 @@ try {
   res.status(500).json({msg:"Server Errors"})
 }
 }
-
-
-
-
-// reset password
-exports.resetpassword= async(req, res)=>{
-  const {token, password}= req.body
-  console.log('tokenno1', token)
-  if(!token)
-  
-  res.status(400).send({
-   'message':'sorry token is missing'
-  })
-  jwt.verify(token,process.env.JWT_RESET_PASSWORD, async(err, decode)=>{
-    if(err){
-      res.status(404).send({
-        'message':'invalid token'
-      })
-    }
-    const {email } = jwt.decode(token)
-    
-    // console.log(jwt.decode(token))
-
-    try{
-      const existUser= await User.findOne({email})
-      console.log(existUser)
-
-      if (!existUser){
-        return res.status(400).send({
-          'message':'somethign went wrong'
-        })
-      }
-    
-      existUser.set(password)
-      existUser.save((err, newpassword=>{
-        if(err){
-          res.send(err)
-          // console.log(err)
-        }
-      }))
-    }
-    catch(error){
-      console.log(error)
-    }
-  })
-}
-
-
 exports.resetpasswordemailsend= 
 async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-
-
   const { email } = req.body;
-  
-
   try {
     let user = await User.findOne({ email });
 
@@ -313,3 +259,55 @@ async (req, res) => {
 
 }
 
+// reset password final step
+exports.resetpassword= async(req, res)=>{
+  const { password}= req.body;
+  const token = req.header('x-auth-token');
+  if(!password)
+  {
+    res.status(400).send({
+      'message':'password is required'
+    })
+  }
+  if(!token)
+  
+  res.status(400).send({
+   'message':'sorry token is missing'
+  })
+  jwt.verify(token,process.env.JWT_RESET_PASSWORD, async(err, decode)=>{
+    if(err){
+      res.status(404).send({
+        'message':'invalid token'
+      })
+    }
+    const {email } = jwt.decode(token)
+    
+    // console.log(jwt.decode(token))
+
+    try{
+      const existUser= await User.findOne({email})
+
+      if (!existUser){
+        return res.status(400).send({
+          'message':'somethign went wrong'
+        })
+      }
+      const salt= await bcrypt.genSalt(10)
+      const haspassword= await bcrypt.hash(password, salt)
+  
+      existUser.set({password:haspassword})
+      console.log('after set', existUser)
+    existUser.save((err, newdata=>{
+         if(err){
+           res.send(err)
+       console.log(err)
+         }
+         res.send({'msg':'your password reset successfully'})
+       }))
+      
+    }
+    catch(error){
+      console.log(error)
+    }
+  })
+}

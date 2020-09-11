@@ -14,7 +14,7 @@ module.exports = (req, res, next) => {
    // Verify token
   try {
       console.log(token)
-    const decoded = jwt.verify(token, process.env.JWT_ACCOUNT_ACTIVATION);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
  console.log(decoded)
     req.currentuser = decoded;
     next()
