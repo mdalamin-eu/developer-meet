@@ -9,7 +9,7 @@ app.use(morgan());
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
-mongoose.connect(process.env.DATABASE_CLOUD, { useNewUrlParser: true }).then(() => console.log('DB connecteed'))
+mongoose.connect(process.env.DATABASE_CLOUD, { useNewUrlParser: true }).then(() => console.log('DB connected'))
 .catch((err) => console.log(err))
 
 // API
