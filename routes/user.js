@@ -19,6 +19,7 @@ router.get('/current',AuthGuard, User.auth);
 router.post('/reset-password', User.resetpasswordemailsend)
 router.patch('/enterpassword', User.resetpassword)
 router.post('/addpost', AuthGuard,Posts.post)
-    
+// router.get('/:id',Posts.postById)
+router.get('/:id',User.userById)
 
 module.exports = router;

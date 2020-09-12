@@ -10,7 +10,7 @@ const PostSchema = new Schema({
     {
       user: {
         type: Schema.Types.ObjectId,
-        ref: "users"
+        ref: "user"
       }
     }
   ],
@@ -18,7 +18,7 @@ const PostSchema = new Schema({
     {
       user: {
         type: Schema.Types.ObjectId,
-        ref: "users"
+        ref: "User"
       },
       text: {
         type: String,
@@ -53,4 +53,4 @@ name:{
   }
 });
 
-module.exports = Post = mongoose.model("post", PostSchema);
+module.exports = Post = mongoose.model("Post", PostSchema);

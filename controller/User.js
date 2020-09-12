@@ -311,3 +311,32 @@ exports.resetpassword= async(req, res)=>{
     }
   })
 }
+
+//postCount
+exports.userById=  async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  try {
+
+    let user =await User.findById(req.params.id).populate("posts",["text"]);
+    console.log('any post', user)
+    if (!user) {
+      return res
+        .status(400)
+        .json({ errors: [{ msg: " The user not found " }] });
+    } else {
+
+      res.send(user)
+         //Send email
+         
+    }
+  }
+
+ catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error 2");
+  }
+
+}
