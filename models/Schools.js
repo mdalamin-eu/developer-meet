@@ -21,9 +21,9 @@ const SchoolSchema = new mongoose.  Schema({
     },
 
     phone:{
-        type:number
+        type:Number
     }
     
 })
 
-module.exports = User = monsoose.model("User", SchoolSchema)
+module.exports = School = monsoose.model("School", SchoolSchema)
