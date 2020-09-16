@@ -41,6 +41,14 @@ const UserSchema = new mongoose.Schema({
          ref: "Following"
      }
  ],
+ 
+
+ schools: [
+     {
+         type: Schema. Types. ObjectId,
+         ref: " schools"
+     }
+ ],
     
     date:{
         type:Date,

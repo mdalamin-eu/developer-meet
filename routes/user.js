@@ -3,6 +3,7 @@ const router = express.Router();
 const User=require('../controller/User')
 const Posts=require('../controller/Posts')
 const  AuthGuard = require('../middleware/authguard')
+const Follow = require('../controller/followersfollowing')
 
 
 
@@ -21,5 +22,6 @@ router.patch('/enterpassword', User.resetpassword)
 router.post('/addpost', AuthGuard,Posts.post)
 // router.get('/:id',Posts.postById)
 router.get('/:id',User.userById)
+router.post('/following/:id', AuthGuard, Follow.following)
 
 module.exports = router;

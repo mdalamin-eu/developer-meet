@@ -1,0 +1,1 @@
+const School = require ('../models/Schools')
