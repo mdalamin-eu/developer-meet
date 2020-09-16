@@ -6,7 +6,7 @@ const SchoolSchema = new mongoose.  Schema({
         required: true
     },
 
-    id:{
+    school_id:{
         type: Number,
         required: true,
         unique: true
@@ -26,4 +26,4 @@ const SchoolSchema = new mongoose.  Schema({
     
 })
 
-module.exports = School = monsoose.model("School", SchoolSchema)
+module.exports = School = mongoose.model("School", SchoolSchema)

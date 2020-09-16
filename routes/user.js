@@ -4,6 +4,7 @@ const User=require('../controller/User')
 const Posts=require('../controller/Posts')
 const  AuthGuard = require('../middleware/authguard')
 const Follow = require('../controller/followersfollowing')
+const School = require('../controller/schools')
 
 
 
@@ -23,5 +24,6 @@ router.post('/addpost', AuthGuard,Posts.post)
 // router.get('/:id',Posts.postById)
 router.get('/:id',User.userById)
 router.post('/following/:id', AuthGuard, Follow.following)
+router.post('/school', AuthGuard, School.school)
 
 module.exports = router;
