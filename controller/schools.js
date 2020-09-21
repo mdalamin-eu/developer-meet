@@ -44,9 +44,30 @@ exports.school= async (req, res) => {
 
 
 
-exports.schoolById= async(req, res) => {
+exports.schoolAddByUser= async(req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array()});
+    }
+    try {
+        
+        let school = await  School.findOne({school_id:req.params.id});
+        console.log(school)
+        if(!school){
+            return res
+            .status(400)
+            .json({ error: [{msg:"School not found "}]});
+        }
+        else {
+            User.update(
+                { _id: req.currentuser.id },
+                { $push: { schools:  req.params.id} },
+                () => {}
+            );
+        }
+    }
+    catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server error 4");
     }
 }
