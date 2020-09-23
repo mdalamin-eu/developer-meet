@@ -20,6 +20,12 @@ exports.UserValidator=[
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$.!%*#?&])[A-Za-z\d@$.!%*#?&]{8,}$/,"i")
     .withMessage('You have to give  password at least one capital letter and one small letter, one number and one speacial character like (@$.!%*#?&)'),
 
+check('birthdate')
+.not()
+.isEmpty()
+.withMessage('Birthdate is required'),
+
+
     check('phone')
     .not()
     .isEmpty()
