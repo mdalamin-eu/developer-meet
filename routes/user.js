@@ -25,6 +25,6 @@ router.post('/addpost', AuthGuard,Posts.post)
 router.get('/:id',User.userById)
 router.post('/following/:id', AuthGuard, Follow.following)
 router.post('/school', AuthGuard, School.school)
-router.patch('/school-add-user/:id', AuthGuard, )
+router.patch('/schooladd/:id', AuthGuard, School.schoolAddByUser)
 
 module.exports = router;

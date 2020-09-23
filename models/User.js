@@ -37,7 +37,7 @@ const UserSchema = new mongoose.Schema({
 
  following:[
      {
-         type: Schema. Types.ObjectId,
+         type: Schema.Types.ObjectId,
          ref: "Following"
      }
  ],
@@ -45,8 +45,8 @@ const UserSchema = new mongoose.Schema({
 
  schools: [
      {
-         type: Schema. Types. ObjectId,
-         ref: " schools"
+         type: Schema.Types.ObjectId,
+         ref: " Schools"
      }
  ],
     

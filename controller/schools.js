@@ -1,18 +1,18 @@
 const School = require ('../models/Schools')
 const User = require('../models/User')
-const gravater = require('gravatar');
+const gravater = require('gravatar'); //it's for photo
 
 const { check, validationResult } = require('express-validator/check')
 
 exports.school= async (req, res) => {
-    const errors = validationResult(req);
+    const errors = validationResult(req); 
     if(!errors.isEmpty()){
         return res.status(400).json({ errors: errors.array()});
     }
 
     try{
-        console.log('lolo',req.body.school_id)
-        let school = await  School.findOne({school_id:req.body.school_id});
+        console.log('lolo',req.body.school_id) 
+        let school = await  School.findOne({school_id:req.body.school_id}); //body means it's bodyParsher
         console.log(school)
         if(school){
             return res
@@ -42,29 +42,32 @@ exports.school= async (req, res) => {
 }
 
 
-
+//last one for added for school of users
 
 exports.schoolAddByUser= async(req, res) => {
     const errors = validationResult(req);
+    
     if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array()});
     }
     try {
         
-        let school = await  School.findOne({school_id:req.params.id});
-        console.log(school)
+        let school = await  School.findById(req.params.id);
         if(!school){
             return res
             .status(400)
             .json({ error: [{msg:"School not found "}]});
         }
         else {
-            User.update(
-                { _id: req.currentuser.id },
-                { $push: { schools:  req.params.id} },
-                () => {}
-            );
+           console.log(req.currentuser.id)
+          User.update(
+            { _id: req.currentuser.id },
+            { $push: { schools:  req.params.id} },
+            () => {}
+          );
+              
         }
+       
     }
     catch (err) {
         console.error(err.message);
