@@ -41,15 +41,15 @@ const UserSchema = new mongoose.Schema({
  following:[
      {
          type: Schema.Types.ObjectId,
-         ref: "Following"
+         ref: "User"
      }
  ],
  
 
- schools: [
+ schools:[
      {
          type: Schema.Types.ObjectId,
-         ref: " Schools"
+         ref: "School"
      }
  ],
     

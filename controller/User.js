@@ -320,7 +320,7 @@ exports.userById=  async (req, res) => {
   }
   try {
 
-    let user =await User.findById(req.params.id).populate("posts",["text"]);
+    let user =await User.findById(req.params.id).populate("posts",["text"]).populate("schools",["name"]).populate("following",["name","avatar"]);
     console.log('any post', user)
     if (!user) {
       return res

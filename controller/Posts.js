@@ -11,17 +11,16 @@ exports.post=  async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-
-
-
   try {
 
-    let user = await User.findById(req.currentuser.id).populate("posts");
+    let user = await User.findById(req.currentuser.id);
+    console.log('Userpost', user)
     if (!user) {
       return res
         .status(400)
         .json({ errors: [{ msg: "User not found" }] });
-    } else {
+
+      } else {
 
       newPost = new Post({
         text:req.body.text,
@@ -47,7 +46,7 @@ exports.post=  async (req, res) => {
 
  catch (err) {
     console.error(err.message);
-    res.status(500).send("Server error 2");
+    res.status(500).send("Server error 7");
   }
 
 }
@@ -58,18 +57,15 @@ exports.postById=  async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-
-    let posts = await (await Post.findById(req.params.id)).populate("user",["name","avatar"]);
+    let posts = await Post.findById(req.params.id).populate("user",["name","avatar"]);
     console.log('any post', posts)
     if (!posts) {
       return res
         .status(400)
-        .json({ errors: [{ msg: " The user haven't post yet " }] });
+        .json({ errors: [{ msg: " wrong post id " }] });
     } else {
-
       res.send(posts)
          //Send email
-         
     }
   }
 

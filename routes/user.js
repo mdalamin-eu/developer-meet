@@ -21,10 +21,13 @@ router.get('/current',AuthGuard, User.auth);
 router.post('/reset-password', User.resetpasswordemailsend)
 router.patch('/enterpassword', User.resetpassword)
 router.post('/addpost', AuthGuard,Posts.post)
+
 // router.get('/:id',Posts.postById)
 router.get('/:id',User.userById)
 router.post('/following/:id', AuthGuard, Follow.following)
 router.post('/school', AuthGuard, School.school)
 router.patch('/schooladd/:id', AuthGuard, School.schoolAddByUser)
+router.get('/school/:code', School.schoolBycode)
+router.get('/post/:id',Posts.postById)
 
 module.exports = router;

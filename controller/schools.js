@@ -74,3 +74,32 @@ exports.schoolAddByUser= async(req, res) => {
         res.status(500).send("Server error 4");
     }
 }
+
+
+//  Find School by code
+exports.schoolBycode=  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    try {
+  
+      let school =await School.findOne({school_id:req.params.code})
+  
+      if (!school) {
+        return res
+          .status(400)
+          .json({ errors: [{ msg: " The school not found " }] });
+      } else {
+  
+        res.send(school)
+    
+      }
+    }
+  
+   catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server error 2");
+    }
+  
+  }
