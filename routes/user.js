@@ -19,7 +19,7 @@ router.post('/activate', User.registeractivate);
 router.get('/current',AuthGuard, User.auth);
 router.post('/reset-password', User.resetpasswordemailsend)
 router.patch('/enterpassword', User.resetpassword)
-
+router.patch('/edit-user', AuthGuard,  User.editUserById)
 
 // router.get('/:id',Posts.postById)
 router.get('/:id',User.userById)

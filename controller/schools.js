@@ -11,7 +11,7 @@ exports.school= async (req, res) => {
     }
 
     try{
-        console.log('lolo',req.body.school_id) 
+        console.log('lolo',req.body.school_id ) 
         let school = await  School.findOne({school_id:req.body.school_id}); //body means it's bodyParsher
         console.log(school)
         if(school){

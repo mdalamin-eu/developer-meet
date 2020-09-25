@@ -34,6 +34,7 @@ const UserSchema = new mongoose.Schema({
  followers:[
      {
          type: Schema.Types.ObjectId,
+         unique: true,
          ref: "Followers"
      }
  ],
@@ -41,6 +42,7 @@ const UserSchema = new mongoose.Schema({
  following:[
      {
          type: Schema.Types.ObjectId,
+         unique:true,
          ref: "User"
      }
  ],

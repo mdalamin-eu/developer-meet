@@ -25,12 +25,12 @@ try {
           ) {
             User.update(
               { _id: req.params.id },
-              { $push: { followers: req.currentuser.id } },
+              { $addToSet: { followers: req.currentuser.id } },
               () => {}
             );
       User.update(
         { _id: req.currentuser.id },
-        { $push: { following:  req.params.id} },
+        { $addToSet: { following:  req.params.id} },
         () => {}
       );
           }

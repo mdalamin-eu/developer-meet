@@ -84,7 +84,38 @@ AWS.config.update({
     }
   
   }
+
+ 
 //registerSendApiDone
+
+exports.editUserById = async (req, res) => {
+  const userData = req.body;
+
+  try {
+    if(userData.password) {
+      const salt= await bcrypt.genSalt(10)
+        userData.password= await bcrypt.hash(userData.password, salt)
+    }
+    User.findById(req.currentuser.id)
+    .exec((err, foundUser) => {
+      if (err) {
+        return res.status(422).send({
+          errors: [{ title: "User edit Error!", detail: "Could not found User" }]
+        });
+      }
+      foundUser.set(userData);
+      foundUser.save((err, foundUser) => {
+        if (err) {
+          res.status(400).send("something went wrong");
+        }
+        return res.json(foundUser);
+      });
+    });   
+  } catch (error) {
+    
+  }
+ 
+};
 
 
 
