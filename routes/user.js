@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const User=require('../controller/User')
-const Posts=require('../controller/Posts')
 const  AuthGuard = require('../middleware/authguard')
 const Follow = require('../controller/followersfollowing')
 
