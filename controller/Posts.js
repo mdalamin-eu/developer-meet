@@ -111,3 +111,17 @@ exports.editPostById= async (req, res) => {
  
 
 }
+
+/// GET ALL POSTS
+
+exports.getAllPosts = async (req, res) => {
+   
+ const posts = await Post.find({});
+
+  if(!posts) {
+    return res.status(404).send({
+      errors:[{title:"Post found Error!", detail:"post not found"}]
+    });
+  }
+res.send(posts)
+}
