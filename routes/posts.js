@@ -6,7 +6,7 @@ const  AuthGuard = require('../middleware/authguard')
 
 router.post('/addpost', AuthGuard,Posts.post)
 router.get('/post/:id',Posts.postById)
-
+router.patch('/edit-post/:id', AuthGuard,  Posts.editPostById)
 
 
 module.exports= router;

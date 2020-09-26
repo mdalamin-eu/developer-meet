@@ -75,3 +75,39 @@ exports.postById=  async (req, res) => {
   }
 
 }
+
+
+//postEdit
+
+exports.editPostById= async (req, res) => {
+  const postData = req.body;
+  const postId = req.params.id
+
+
+ Post.findById(postId).exec((err, foundPost)=>{
+    if(err){
+      return res.status(422).send({
+        errors:[{title:"Post edit Error!", detail:"post not found"}]
+      });
+    }
+    console.log(foundPost.user, req.currentuser.id)
+    if(req.currentuser.id == foundPost.user) {
+      foundPost.set(postData);
+      foundPost.save((err, foundPost)=>{
+        if(err){
+          res.status(400).send("something went wrong");
+        }
+        return res.json(foundPost);
+      });
+    }
+
+    else {
+      return res.status(400).send({
+        errors:[{title:"Post edit Error!", detail:"Sorry you are not post owner"}]
+      });
+    }
+
+  });
+ 
+
+}
