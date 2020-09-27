@@ -70,7 +70,7 @@ exports.postById=  async (req, res) => {
   }
 
  catch (err) {
-    console.error(err.message);
+    console.log(err.message);
     res.status(500).send("Server error 2");
   }
 
