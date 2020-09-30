@@ -23,7 +23,7 @@ router.patch('/edit-user', AuthGuard,  User.editUserById)
 
 // router.get('/:id',Posts.postById)
 router.get('/:id',User.userById)
-router.post('/following/:id', AuthGuard, Follow.following)
+router.put('/following/:id', AuthGuard, Follow.following)
 
 
 

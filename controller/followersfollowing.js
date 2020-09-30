@@ -19,22 +19,16 @@ try {
     }
 
     else {
-        if (
-            user.following.filter(following => following.user.toString() === req.currentuser.id)
-              .length === 0
-          ) {
-            User.update(
-              { _id: req.params.id },
-              { $addToSet: { followers: req.currentuser.id } },
-              () => {}
-            );
-      User.update(
-        { _id: req.currentuser.id },
-        { $addToSet: { following:  req.params.id} },
-        () => {}
-      );
-          }
+      console.log(req.currentuser.id)
+          if(user.followers.filter(follow => follow.toString() == req.currentuser.id).length > 0) {
+            return res.status(422).send({
+              errors: [{ title: "User following Error!", detail: "you already followed the person " }]
+          })
         }
+         user.followers.unshift({user:req.currentuser.id})
+         await user.save()
+         res.send(user);
+      }
     }
     catch (err) {
         console.error(err.message);
