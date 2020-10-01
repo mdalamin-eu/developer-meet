@@ -15,8 +15,7 @@ const UserSchema = new mongoose.Schema({
         required:true
     },
     birthdate:{
-        type:Date,
-        required:true
+        type:Date
     },
     avatar:{
         type:String
@@ -31,22 +30,19 @@ const UserSchema = new mongoose.Schema({
         ref: "Post"
         }
     ],
-
     followers:[
      {
-        user:{  
             type: Schema.Types.ObjectId,
             ref: "users"
-        }
+        
      }
  ],
 
  following:[
     {
-       user:{  
            type: Schema.Types.ObjectId,
            ref: "users"
-       }
+       
     }
 ],
  

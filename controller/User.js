@@ -26,7 +26,7 @@ AWS.config.update({
     }
   
 
-    const { name, email, password, phone } = req.body;
+    const { name, email, password, phone, birthdate} = req.body;
     
 
     try {
@@ -47,14 +47,15 @@ AWS.config.update({
           email,
           password,
           avatar,
-          phone
+          phone,
+          birthdate
         });
 
         const salt= await bcrypt.genSalt(10)
         user.password= await bcrypt.hash(password, salt)
-        console.log(user.phone)
+        console.log(user.birthdate)
       
-        const payload = { id: user.id, name: user.name, avatar: user.avatar, password:user.password, phone:user.phone, email:user.email, date:user.date}; //create jwt
+        const payload = { id: user.id, name: user.name, avatar: user.avatar, password:user.password, phone:user.phone, email:user.email,birthdate:user.birthdate}; //create jwt
    
         const token = jwt.sign(payload, process.env.JWT_ACCOUNT_ACTIVATION,{
           expiresIn:'5h'
