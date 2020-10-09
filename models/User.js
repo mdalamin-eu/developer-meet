@@ -24,29 +24,32 @@ const UserSchema = new mongoose.Schema({
     type:Number
     //required:true
     },
+
+    following: [
+        {
+    
+            user:{ 
+                type: Schema.ObjectId, 
+                ref: 'User' 
+            },
+        }
+    
+    ],
+    followers: [
+        {
+    
+            user:{ 
+                type: Schema.ObjectId, 
+                ref: 'User' 
+            },
+        }
+    ],
     posts: [
         {
             type: Schema.Types.ObjectId,
         ref: "Post"
         }
     ],
-    followers:[
-     {
-            type: Schema.Types.ObjectId,
-            ref: "users"
-        
-     }
- ],
-
- following:[
-    {
-           type: Schema.Types.ObjectId,
-           ref: "users"
-       
-    }
-],
- 
-
  schools:[
      {
          type: Schema.Types.ObjectId,

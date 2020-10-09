@@ -140,7 +140,7 @@ exports.registeractivate= async(req, res)=>{
         'message':'invalid token'
       })
     }
-    const { name, email, phone, password, avatar, date } = jwt.decode(token)
+    const { name, email, phone, password, avatar, birthdate} = jwt.decode(token)
     console.log('simnumber', phone)
     // console.log(jwt.decode(token))
 
@@ -154,7 +154,7 @@ exports.registeractivate= async(req, res)=>{
         })
       }
       const user= new User({
-        name, email, phone,  password, avatar, date
+        name, email, phone,  password, avatar, birthdate
       })
       
       
@@ -163,10 +163,10 @@ exports.registeractivate= async(req, res)=>{
         if(err){
           res.send(err)
           // console.log(err)
-
         }
-        console.log('usernew', newUser)
-        const payload = { id: user.id, name: user.name, avatar: user.avatar, user:email }; //create jwt
+        console.log(newUser);
+
+        const payload = { id: user.id, name: user.name, avatar: user.avatar, email:user.email }; //create jwt
 
         jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 360000 }, (err, token) => {
           if (err) throw err;

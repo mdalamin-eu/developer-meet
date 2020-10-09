@@ -17,7 +17,13 @@ try {
         .status(400)
         .json ({ errors:[{ msg:"not found user"}]});
     }
-
+ const isMatched = req.currentuser.id == req.params.id;
+  if(isMatched) {
+    return res
+    .status(400)
+    .json ({ errors:[{ msg:"you can't follow you"}]});
+  }
+    
     else {
       console.log(req.currentuser.id)
           if(user.followers.filter(follow => follow.toString() == req.currentuser.id).length > 0) {
@@ -29,9 +35,10 @@ try {
          await user.save()
          res.send(user);
       }
+      
     }
     catch (err) {
         console.error(err.message);
-        res.status(500).send("Server error 2");
+        res.status(500).send("Server error 00");
 }
 }
