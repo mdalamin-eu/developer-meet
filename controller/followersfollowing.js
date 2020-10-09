@@ -12,6 +12,7 @@ if(!errors.isEmpty()){
 
 try {
     let user = await  User.findById(req.params.id)
+    let currentuser = await  User.findById(req.currentuser.id)
     if(!user) {
         return res
         .status(400)
@@ -32,8 +33,10 @@ try {
           })
         }
          user.followers.unshift({user:req.currentuser.id})
+         currentuser .following.unshift({user:req.params.id})
          await user.save()
-         res.send(user);
+         await currentuser.save()
+         res.send(currentuser);
       }
       
     }
