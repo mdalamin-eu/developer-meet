@@ -125,3 +125,24 @@ exports.getAllPosts = async (req, res) => {
   }
 res.send(posts)
 }
+
+
+exports.comment = async (req, res) => {
+        
+  try {
+    const CurrentUser = await User.findById(req.currentuser.id);
+    const post  = await Post.findById(req.params.id);
+console.log(post)
+    const newComment = {
+      text:req.body.text,
+      name:CurrentUser.name,
+      avatar:CurrentUser.avatar
+    }
+
+    post.comments.unshift(newComment);
+   await  post.save()
+   res.status(200).send(post)
+  } catch (error) {
+     console.log('errors')
+  }
+}

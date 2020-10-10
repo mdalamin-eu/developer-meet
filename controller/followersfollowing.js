@@ -13,6 +13,7 @@ if(!errors.isEmpty()){
 try {
     let user = await  User.findById(req.params.id)
     let currentuser = await  User.findById(req.currentuser.id)
+    
     if(!user) {
         return res
         .status(400)
@@ -26,17 +27,32 @@ try {
   }
     
     else {
-      console.log(req.currentuser.id)
-          if(user.followers.filter(follow => follow.toString() == req.currentuser.id).length > 0) {
-            return res.status(422).send({
-              errors: [{ title: "User following Error!", detail: "you already followed the person " }]
-          })
+      
+          if(user.followers.filter(follow => follow.user.toString() == req.currentuser.id).length > 0) {
+
+            const removeFollowers= user.followers
+            .map(follower => follower.user.toString())
+            .indexOf(req.currentuser.id);
+            user.followers.splice(removeFollowers, 1);
+            
+            const removeFollowing = currentuser.following
+            .map(following => following.user.toString())
+            .indexOf(req.params.id);
+            currentuser.following.splice(removeFollowing, 1);
+            await currentuser.save();
+            await user.save();
+           return res.json(currentuser);
         }
-         user.followers.unshift({user:req.currentuser.id})
-         currentuser .following.unshift({user:req.params.id})
-         await user.save()
-         await currentuser.save()
-         res.send(currentuser);
+        if(user.followers.filter(follow => follow.user.toString() == req.currentuser.id).length == 0) {
+          user.followers.unshift({user:req.currentuser.id})
+          currentuser .following.unshift({user:req.params.id})
+          await user.save()
+          await currentuser.save()
+          res.send(currentuser);
+        }
+
+        return res.json(user)
+        
       }
       
     }

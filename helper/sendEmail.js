@@ -4,9 +4,6 @@ exports.registerUserEmail = (token, email) => {
           Destination: { /* required */
             ToAddresses: [email],
           },
-          ReplyToAddresses: [
-            process.env.Email_TO
-           ],
           Message: { /* required */
             Body: { /* required */
               Html: {
