@@ -126,7 +126,7 @@ exports.getAllPosts = async (req, res) => {
 res.send(posts)
 }
 
-
+//commentAdd.......{
 exports.comment = async (req, res) => {
         
   try {
@@ -146,3 +146,5 @@ console.log(post)
      console.log('errors')
   }
 }
+
+//.............}  CommentClose

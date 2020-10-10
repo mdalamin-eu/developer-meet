@@ -12,22 +12,27 @@ if(!errors.isEmpty()){
 
 try {
     let user = await  User.findById(req.params.id)
-    let currentuser = await  User.findById(req.currentuser.id)
-    
-    if(!user) {
+  if(!user) {
         return res
         .status(400)
         .json ({ errors:[{ msg:"not found user"}]});
     }
+
+                          //self follow stop -- start-------{
+  let currentuser = await  User.findById(req.currentuser.id)
  const isMatched = req.currentuser.id == req.params.id;
   if(isMatched) {
     return res
     .status(400)
     .json ({ errors:[{ msg:"you can't follow you"}]});
   }
-    
+                                  //--------}self follow stop --close
+
+
+
+                                  //unfollow start -----{
     else {
-      
+    
           if(user.followers.filter(follow => follow.user.toString() == req.currentuser.id).length > 0) {
 
             const removeFollowers= user.followers
@@ -54,7 +59,7 @@ try {
         return res.json(user)
         
       }
-      
+                                      //---------}unfollow close
     }
     catch (err) {
         console.error(err.message);
