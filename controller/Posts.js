@@ -148,3 +148,24 @@ console.log(post)
 }
 
 //.............}  CommentClose
+
+
+exports.likes = async(req, res) => {
+  try{
+let post = await Post.findById(req.params.id);
+
+
+if(post.likes.filter(like => like.user.toString()== req.currentuser.id).length > 0){
+return res.json('you already like')
+}
+post.likes.unshift({user:req.currentuser.id});
+post.save();
+
+
+return res.json(post)
+  }catch(err){
+    console.log(err.message);
+    res.status(500).send("server error 01")
+
+  }
+}
