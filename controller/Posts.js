@@ -153,10 +153,15 @@ console.log(post)
 exports.likes = async(req, res) => {
   try{
 let post = await Post.findById(req.params.id);
-
+let user = await User.findById(req.currentuser.id)
 
 if(post.likes.filter(like => like.user.toString()== req.currentuser.id).length > 0){
-return res.json('you already like')
+  const removeLike=post.likes.map(like=>like.user.toString())
+  .indexOf(req.currentuser.id);
+  post.likes.splice(removeLike,1);
+
+  await post.save();
+  return res.json(post)
 }
 post.likes.unshift({user:req.currentuser.id});
 post.save();
