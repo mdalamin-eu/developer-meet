@@ -12,16 +12,31 @@ const SchoolSchema = new mongoose.  Schema({
         unique: true
     },
 
+    degree:{
+    type:String,
+    required:true
+    },
+
+    fieldofstudy:{
+    type: String,
+    required:true
+    },
+
+    to:{
+    type:String
+    },
+
+    from:{
+    type:String
+    },
+    
+    current:{
+        type: Boolean,
+        default: false
+    },
+
     address:{
         type: String
-    },
-
-    email:{
-        type: String
-    },
-
-    phone:{
-        type:Number
     }
     
 })
