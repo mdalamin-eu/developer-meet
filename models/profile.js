@@ -64,4 +64,24 @@ experience: [
         }
     }
 ],
+social:{
+    twitter:{
+        type: String
+    },
+    linkedin:{
+        type:String
+    },
+    instagram:{
+        type: String
+    },
+    facebook: {
+        type: String
+    },
+    snapchat:{
+        type: String
+    },
+    youtube:{
+        type: String
+    },
+}
 })
