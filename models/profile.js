@@ -85,3 +85,5 @@ social:{
     },
 }
 })
+
+module.exports = Profile = mongoose.model('Profile', ProfileSchema);
