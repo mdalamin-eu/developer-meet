@@ -47,6 +47,11 @@ exports.Profile = async (req, res) => {
            githubusername
 
           });
+              const existHandle= await Profile.findOne({handle:profileFields.handle});
+              if(existHandle){
+                  return res.status(404)
+                  .json({errors:[{msg:"The handle already exists"}]});
+              }
     
           await newProfile.save();
     } catch (error) {
