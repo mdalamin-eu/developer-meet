@@ -22,6 +22,7 @@ router.patch('/enterpassword', User.resetpassword)
 router.patch('/edit-user', AuthGuard,  User.editUserById)
 router.post('/profile', AuthGuard, ProfileController.Profile )
 router.get('/myprofile',AuthGuard, ProfileController.Myprofile)
+router.put('/experience', AuthGuard, ProfileController.Experience)
 
 // router.get('/:id',Posts.postById)
 router.get('/:id',User.userById)
