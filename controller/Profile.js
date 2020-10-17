@@ -84,3 +84,41 @@ exports.Myprofile= async(req, res)=>{
         res.status(500).send("Server error")
     }
 }
+
+
+exports.Experience = async(req, res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(404).json({errors: errors.array()});
+    }
+    const {
+        title,
+        company,
+        location,
+        from,
+        to,
+        current,
+        description
+    } = req.body;
+
+    const newExp = {
+        title,
+        company,
+        location,
+        from,
+        to,
+        current,
+        description
+    };
+
+    try{
+        const editExp= await profile.findOne({user: req.currentuser.id});
+        editExp.experience.unshift(newExp);
+        await profile.save();
+        res.json(profile);
+    }catch (error) {
+        console.log(error);
+        res.status(500).send("Server Error");
+    }
+}
+
