@@ -70,3 +70,17 @@ if(githubusername) profileFields.githubusername = githubusername;
 
 }
 
+exports.Myprofile= async(req, res)=>{
+    try{
+        const myprofile= await (await Profile.findOne({user: req.currentuser.id})).populate(
+            "user", ["name", "avatar"]
+        );
+        if (!myprofile) {
+            return res.status(400).json({msg:"There is no profile for this user"});
+        }
+        res.json(myprofile);
+    }catch(err){
+        console.error(err.message);
+        res.status(500).send("Server error")
+    }
+}
