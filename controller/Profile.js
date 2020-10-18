@@ -3,7 +3,7 @@ const router = express.Router();
 const Auth = require("../middleware/authguard")
 const Profile = require("../models/Profile");
 const User = require("../models/User")
-
+const { check, validationResult}= require("express-validator/check")
 
 exports.Profile = async (req, res) => { 
     const {
@@ -112,10 +112,10 @@ exports.Experience = async(req, res) => {
     };
 
     try{
-        const editExp= await profile.findOne({user: req.currentuser.id});
+        const editExp= await Profile.findOne({user: req.currentuser.id});
         editExp.experience.unshift(newExp);
-        await profile.save();
-        res.json(profile);
+        await editExp.save();
+        res.json(editExp);
     }catch (error) {
         console.log(error);
         res.status(500).send("Server Error");
