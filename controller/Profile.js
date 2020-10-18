@@ -65,7 +65,8 @@ if(githubusername) profileFields.githubusername = githubusername;
         }
     
     } catch (error) {
-        
+        console.error(err.message);
+        res.status(500).send("Server error")
     }
 
 }
@@ -124,11 +125,26 @@ exports.Experience = async(req, res) => {
 
 
 exports.DeleteExp = async (req, res) =>{
-    try{
-        const deleteexperience = await Profile.Experience.findOneAndRemove({id:req.params.id});
+    console.log("dd", req.params.id)
 
-        await deleteexperience.save();
-        return res.json(deleteexperience)
+    try{
+       
+      const expDelete =  await Profile.findOne({user:req.currentuser.id});
+
+
+      const expId= expDelete.experience.map(exp => exp._id.toString());
+      
+      const removeIndex = expId.indexOf(req.params.id);
+      console.log("kpk", removeIndex)
+      if (removeIndex ===-1){
+          res.status(500).json({msg:"Server Errors"});
+      }
+      expDelete.experience.splice(removeIndex, 1);
+      
+      await expDelete.save();
+          
+       res.json(expDelete)
+       
     }catch(err){
         console.log(err.message)
         res.status(500).send("server error")

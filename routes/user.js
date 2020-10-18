@@ -23,6 +23,7 @@ router.patch('/edit-user', AuthGuard,  User.editUserById)
 router.post('/profile', AuthGuard, ProfileController.Profile )
 router.get('/myprofile',AuthGuard, ProfileController.Myprofile)
 router.patch('/experience', AuthGuard, ProfileController.Experience)
+router.delete('/delete-experience/:id', AuthGuard, ProfileController.DeleteExp)
 
 // router.get('/:id',Posts.postById)
 router.get('/:id',User.userById)
