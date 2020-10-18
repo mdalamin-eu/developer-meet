@@ -129,15 +129,15 @@ exports.DeleteExp = async (req, res) =>{
 
     try{
        
-      const expDelete =  await Profile.findOne({user:req.currentuser.id});
+      const expDelete =  await Profile.findOne({user:req.currentuser.id}); //1st i checked profile of user
 
 
-      const expId= expDelete.experience.map(exp => exp._id.toString());
-      
-      const removeIndex = expId.indexOf(req.params.id);
+      const expId= expDelete.experience.map(exp => exp._id.toString());// take exp Id 
+      console.log("sim", expId)
+      const removeIndex = expId.indexOf(req.params.id); //remove exp
       console.log("kpk", removeIndex)
       if (removeIndex ===-1){
-          res.status(500).json({msg:"Server Errors"});
+          res.status(500).json({msg:"not found"});
       }
       expDelete.experience.splice(removeIndex, 1);
       
