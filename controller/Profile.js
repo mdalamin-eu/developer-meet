@@ -122,3 +122,15 @@ exports.Experience = async(req, res) => {
     }
 }
 
+
+exports.DeleteExp = async (req, res) =>{
+    try{
+        const deleteexperience = await Profile.Experience.findOneAndRemove({id:req.params.id});
+
+        await deleteexperience.save();
+        return res.json(deleteexperience)
+    }catch(err){
+        console.log(err.message)
+        res.status(500).send("server error")
+    }
+}
