@@ -42,6 +42,7 @@ if(twitter) profileFields.social.twitter=twitter;
 if(facebook) profileFields.social.facebook = facebook;
 if (linkedin) profileFields.social.linkedin = linkedin;
 if (instagram) profileFields.social.instagram = instagram;
+if(snapchat) profileFields.social.snapchat = snapchat;
 
 
     try {
