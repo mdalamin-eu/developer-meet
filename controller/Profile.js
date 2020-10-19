@@ -34,7 +34,9 @@ if(handle) profileFields.handle = handle;
 if(status) profileFields.status = status;
 if(githubusername) profileFields.githubusername = githubusername;
 if(skills) {
-    profileFields.skills = skills.split(",").map(skills => skills.trim());
+    console.log('lol',skills)
+    profileFields.skills = skills.map(skill => skill.trim());
+
 }
 profileFields.social = {};
 if(youtube) profileFields.social.youtube=youtube;
