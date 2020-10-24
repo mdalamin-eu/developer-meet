@@ -16,16 +16,16 @@
   
   .landing {
     position: relative;
-    background: url("./img/showcase.jpg") no-repeat;
+    background: url("./Components/img/showcase.jpg") no-repeat;
     background-size: cover;
     background-position: center;
     height: 100vh;
     margin-top: -24px;
-    margin-bottom: -50px;
+    margin-bottom: -80px !important;
   }
   
   .landing-inner {
-    padding-top: 80px;
+    padding-top: 130px;
   }
   
   .dark-overlay {

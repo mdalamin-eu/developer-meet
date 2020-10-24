@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
-import {regAction} from './Components/Actions/action'
-
+import { Route, Switch } from "react-router-dom";
+import "./App.css"
+import Landing from './Components/layout/Landing'
+import Footer from './Components/layout/footer'
+import Navbar from './Components/layout/Navbar'
+import Register from './Components/Auth/register'
 class App extends Component {
-  state={
-    reg:''
-  }
   render() {
     return (
-      <div>
-        hi, bye
-      </div>
-    )
-  }
-};
-function mapStateToProps(state){
-  return{
-    reg:state.appState.value
+          <div className="App">
+           <Navbar/>
+            <Route exact path="/" component={Landing} />
+            <section className="container">
+            <Route exact path="/register" component={Register} />
+            </section>
+<Footer/>
+          </div>
+    );
   }
 }
-export default connect(mapStateToProps,{regAction})(App)
+
+export default App;
