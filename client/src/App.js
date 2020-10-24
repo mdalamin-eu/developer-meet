@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {regAction} from '../Components/Actions/action'
+import {regAction} from './Components/Actions/action'
 
 class App extends Component {
   state={
