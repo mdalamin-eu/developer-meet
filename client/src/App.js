@@ -13,6 +13,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <section className="container">
             <Route exact path="/register" component={Register} />
+            
             </section>
 <Footer/>
           </div>
