@@ -5,6 +5,7 @@ import Landing from './Components/layout/Landing'
 import Footer from './Components/layout/footer'
 import Navbar from './Components/layout/Navbar'
 import Register from './Components/Auth/register'
+import Login from './Components/Auth/Login'
 class App extends Component {
   render() {
     return (
@@ -13,7 +14,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <section className="container">
             <Route exact path="/register" component={Register} />
-            
+            <Route exact path="/login" component={Login} />
             </section>
 <Footer/>
           </div>
