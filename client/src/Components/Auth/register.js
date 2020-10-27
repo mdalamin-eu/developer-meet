@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import TextFieldsGroup from "../common/TextFieldGroup.js";
+import { registerUser } from '../Actions/action'
 class Register extends Component {
   state = {
     name: "",
@@ -21,11 +22,12 @@ class Register extends Component {
         email,
         password
       };
+      this.props.registerUser(registerData);
     }
   };
 
   onChange = e => {
-      console.log(e.target.name, e.target.value)
+      console.log(e.target.name)
     this.setState({ [e.target.name]: e.target.value });
   };
 
