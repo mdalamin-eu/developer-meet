@@ -8,3 +8,5 @@ alerts.map(alert => (
         {alert.msg}
     </div>
 ));
+
+export default Alert;
