@@ -1,11 +1,17 @@
 import { REGISTER_SUCCESS} from '../Actions/Types';
 import isEmpty from '../utlis/isEmpty'
+import setAuthToken from '../utlis/setAuthToken';
 
-export default (state= {value:''}, action)=>{
-    switch(action.type){
-    case 'REGISTER_USER':
-        return{...state, value:action.payload};
-        default:
-            return state
-    }
+const initialState = {isAuthenticated: false, 
+    user:{}, loading:false};
+
+export default  function(state= initialState, action) {
+   const { payload, type } = action;
+   switch(type){
+       case REGISTER_SUCCESS:
+           localStorage.setItem("jwtToken", payload.token);
+           return{...state, ...payload, isAuthenticated:true, loading:false};
+           default:
+               return state;
+   }
 }
