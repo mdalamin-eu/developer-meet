@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import TextFieldsGroup from "../common/TextFieldGroup.js";
+import { setAlert } from "../Actions/alert"
 import { registerUser } from '../Actions/action'
 class Register extends Component {
   state = {
@@ -14,6 +16,7 @@ class Register extends Component {
     e.preventDefault();
 
     if (this.state.password !== this.state.password2) {
+      this.props.setAlert("Password do not match", "danger")
       console.log("password do not match");
     } else {
       const { name, email, password } = this.state;
@@ -32,9 +35,7 @@ class Register extends Component {
   };
 
   render() {
-    if (this.props.isAuthenticated) {
-      return <Redirect to="/dashboard" />;
-    }
+ 
     const { name, email, password, password2 } = this.state;
     return (
       <div className="register">
@@ -87,4 +88,7 @@ class Register extends Component {
     );
   }
 }
-export default Register;
+
+const mapStateToProps = state =>({});
+
+export default connect(mapStateToProps, {registerUser, setAlert})(Register);
