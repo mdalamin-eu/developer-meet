@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import connect from "react-redux";
+import {loginUser} from '../Actions/action'
 import TextFieldsGroup from "../common/TextFieldGroup"
 
 class Login extends Component{
@@ -15,11 +17,13 @@ class Login extends Component{
             email,
             password
         };
+        this.props.loginUser(userData, this.props.history);
     };
+
         onChange = e => {
             this.setState({ [e.target.name]: e.target.value});
         
-    }
+    };
 
     render(){
         const { email, password } = this.state;
@@ -57,7 +61,11 @@ class Login extends Component{
                 </div>
 
             </div>
-        )
+        );
     }
 }
-export default Login;
+const mapStateToProps= state=> ({
+    auth: state.auth
+})
+
+export default connect(mapStateToProps, {loginUser}) (Login);
