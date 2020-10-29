@@ -1,5 +1,6 @@
 import axios from "axios";
-import {REGISTER_SUCCESS,  REGISTER_FAIL } from './Types'
+import {REGISTER_SUCCESS,  REGISTER_FAIL,
+                LOGIN_FAIL, LOGIN_SUCCESS } from './Types'
 import { setAlert } from "./alert";
 
 
