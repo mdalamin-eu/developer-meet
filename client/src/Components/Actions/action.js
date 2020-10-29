@@ -10,7 +10,7 @@ headers:{
 }
 };
 try{
-const res = await axios.post('/api/users/register', userData, config);
+const res = await axios.post('api/users/register', userData, config);
 dispatch({
     type: REGISTER_SUCCESS,
     payload: res.data

@@ -2,9 +2,11 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const app = express()
+var cors = require ('cors');
 const morgan=require('morgan')
 require('dotenv').config()
 
+app.use(cors({credentials:true}));
 app.use(morgan());
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
