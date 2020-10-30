@@ -2,11 +2,26 @@ import React, { Component } from 'react'
 import { Route, Switch } from "react-router-dom";
 import "./App.css"
 import Landing from './Components/layout/Landing'
+
 import Footer from './Components/layout/footer'
 import Navbar from './Components/layout/Navbar'
 import Register from './Components/Auth/register'
 import Login from './Components/Auth/Login'
+import {setCurrentUser} from '../src/Components/Actions/action'
+import setAuthToken from '../src/Components/utlis/setAuthToken'
+import {connect} from 'react-redux'
+import jwt_decode from "jwt-decode";
+
+
+
 class App extends Component {
+  componentDidMount(){
+    if(localStorage.jwtToken) {
+      setAuthToken(localStorage.jwtToken);
+      const decode = jwt_decode(localStorage.jwtToken);
+ this.props.setCurrentUser(decode)    
+    }
+  }
   render() {
     return (
           <div className="App">
@@ -21,5 +36,8 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  
+}
 
-export default App;
+export default  connect(mapStateToProps,{setCurrentUser})(App);

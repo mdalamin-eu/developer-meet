@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect }from "react-redux";
 import {loginUser} from '../Actions/action'
 import TextFieldsGroup from "../common/TextFieldGroup"
-
+import { Redirect } from "react-router-dom";
 class Login extends Component{
     state = {
         email: "",
@@ -27,6 +27,9 @@ class Login extends Component{
 
     render(){
         const { email, password } = this.state;
+        if (this.props.auth.isAuthenticated) {
+            return <Redirect to="/dashboard" />;
+          }
         return(
             <div className="login">
                 <div className= "container">

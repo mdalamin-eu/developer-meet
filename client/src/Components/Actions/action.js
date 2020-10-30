@@ -64,6 +64,9 @@ export const loginUser = (userData, history) => async dispatch => {
             payload:res.data
         });
 
+        dispatch(LoadUser())
+        history.push("/dashboard");
+
     }catch (err){
         const errors = err.response.data.errors;
         if(errors){
@@ -74,3 +77,11 @@ export const loginUser = (userData, history) => async dispatch => {
         });
     }
 };
+// Set logged in user
+export const setCurrentUser = decoded => {
+    return {
+      type: USER_LOADED,
+      payload: decoded
+    };
+  };
+  

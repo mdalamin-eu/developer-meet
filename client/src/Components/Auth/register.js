@@ -37,6 +37,9 @@ class Register extends Component {
   render() {
  
     const { name, email, password, password2 } = this.state;
+    if (this.props.auth.isAuthenticated) {
+      return <Redirect to="/dashboard" />;
+    }
     return (
       <div className="register">
         <div className="container">
@@ -89,6 +92,6 @@ class Register extends Component {
   }
 }
 
-const mapStateToProps = state =>({});
+const mapStateToProps = state =>({auth:state.auth});
 
 export default connect(mapStateToProps, {registerUser, setAlert})(Register);
