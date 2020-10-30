@@ -1,9 +1,31 @@
 import axios from "axios";
 import {REGISTER_SUCCESS,  REGISTER_FAIL,
-                LOGIN_FAIL, LOGIN_SUCCESS } from './Types'
+                LOGIN_FAIL, LOGIN_SUCCESS , USER_LOADED, AUTH_ERROR} from './Types'
 import { setAlert } from "./alert";
+import setAuthToken from "../utlis/setAuthToken"
 
 
+//LoadUser
+export const LoadUser = () => async dispatch => {
+    if(localStorage.jwtToken){
+        setAuthToken(localStorage.jwtToken);
+    }
+    try {
+        const res = await axios.get("api/users/current");
+        dispatch({
+            type:USER_LOADED,
+            payload: res.data
+        });
+    }catch(error){
+        dispatch({
+            type:AUTH_ERROR
+        });
+    }
+};
+
+
+
+//RegisterUser
 export const registerUser = userData => async dispatch =>{
 const config ={
 headers:{
