@@ -1,5 +1,6 @@
 import { REGISTER_SUCCESS,
-                LOGIN_SUCCESS} from '../Actions/Types';
+                LOGIN_SUCCESS,
+                USER_LOADED} from '../Actions/Types';
 import isEmpty from '../utlis/isEmpty'
 import setAuthToken from '../utlis/setAuthToken';
 
@@ -13,6 +14,10 @@ export default  function(state= initialState, action) {
            case LOGIN_SUCCESS:
            localStorage.setItem("jwtToken", payload.token);
            return{...state, ...payload, isAuthenticated:true, loading:false};
+
+        case USER_LOADED:
+            return{...state, isAuthenticated: !isEmpty(action.payload),    //////////////////////
+                user:payload}
            default:
                return state;
    }
