@@ -18,8 +18,10 @@ class App extends Component {
   componentDidMount(){
     if(localStorage.jwtToken) {
       setAuthToken(localStorage.jwtToken);
+      console.log('test before',localStorage.jwtToken);
       const decode = jwt_decode(localStorage.jwtToken);
- this.props.setCurrentUser(decode)    
+      console.log('test',decode);
+ this.props.setCurrentUser()    
     }
   }
   render() {
@@ -37,7 +39,7 @@ class App extends Component {
   }
 }
 const mapStateToProps = state => {
-  
+
 }
 
 export default  connect(mapStateToProps,{setCurrentUser})(App);
