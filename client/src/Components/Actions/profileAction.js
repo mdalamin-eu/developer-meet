@@ -9,7 +9,7 @@ import {setAlert } from "./alert";
 export const currentUserProfile = () => async dispatch=>{
     try{
         dispatch(profileLoadingStart());
-        const res = await axios.get ("api/profile/me");
+        const res = await axios.get ("api/users/myprofile");
         dispatch({
             type: GET_PROFILE,
             payload: res.data
