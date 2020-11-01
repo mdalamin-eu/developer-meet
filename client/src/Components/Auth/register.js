@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import TextFieldsGroup from "../common/TextFieldGroup.js";
 import { setAlert } from "../Actions/alert"
-import { registerUser } from '../Actions/action'
+import { registerUser } from '../Actions/authAction'
 class Register extends Component {
   state = {
     name: "",

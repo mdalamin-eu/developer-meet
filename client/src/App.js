@@ -7,7 +7,7 @@ import Footer from './Components/layout/footer'
 import Navbar from './Components/layout/Navbar'
 import Register from './Components/Auth/register'
 import Login from './Components/Auth/Login'
-import {setCurrentUser} from '../src/Components/Actions/action'
+import {setCurrentUser} from './Components/Actions/authAction'
 import setAuthToken from '../src/Components/utlis/setAuthToken'
 import {connect} from 'react-redux'
 import jwt_decode from "jwt-decode";

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect }from "react-redux";
-import {loginUser} from '../Actions/action'
+import {loginUser} from '../Actions/authAction'
 import TextFieldsGroup from "../common/TextFieldGroup"
 import { Redirect } from "react-router-dom";
 class Login extends Component{
