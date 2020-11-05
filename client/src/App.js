@@ -11,6 +11,7 @@ import {setCurrentUser} from './Components/Actions/authAction'
 import setAuthToken from '../src/Components/utlis/setAuthToken'
 import {connect} from 'react-redux'
 import jwt_decode from "jwt-decode";
+import Dashboard from './Components/Dashboard/Dashboard'
 
 
 
@@ -33,6 +34,9 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/auth/activate/:id" component={Activate}/>
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+            </Switch>
             </section>
 <Footer/>
           </div>

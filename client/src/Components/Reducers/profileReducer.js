@@ -11,7 +11,7 @@ export default function(state= initialState, action){
         case PROFILE_LOADING_START:
             return{
                 ...state,
-                loading:ture 
+                loading: true 
             };
             case GET_PROFILE:
                 return{
