@@ -87,9 +87,8 @@ if(snapchat) profileFields.social.snapchat = snapchat;
 
 exports.Myprofile= async(req, res)=>{
     try{
-        const myprofile= await (await Profile.findOne({user: req.currentuser.id})).populate(
-            "user", ["name", "avatar"]
-        );
+        // populate user means we joing user
+        const myprofile= await Profile.findOne({user: req.currentuser.id}).populate("user");
         if (!myprofile) {
             return res.status(400).json({msg:"There is no profile for this user"});
         }

@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 const PrivateRoute = ({ componet: Componet, auth, ...rest}) => (
     <Route
     {...rest }
+    
     render= {props=>
     auth.isAuthenticate === true?(
 <Componet{...props}/>

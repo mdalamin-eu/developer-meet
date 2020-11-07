@@ -12,6 +12,7 @@ class Dashboard extends Component {
     render() {
         const { user } = this.props.auth;
         const { profile, loading } = this.props.profile;
+        console.log(profile)
 
         let dashboardContent;
         if(profile == null || loading){
@@ -53,7 +54,7 @@ class Dashboard extends Component {
     }
 }
 const mapStateToProps = state => ({
-    profile: state.profile,
+    profile: state.profileData,
     auth: state.auth
 });
 export default connect (mapStateToProps,{ currentUserProfile})(Dashboard);

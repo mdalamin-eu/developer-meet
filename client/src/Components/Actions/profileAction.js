@@ -14,7 +14,7 @@ export const profileLoadingStart = () => async dispatch=>{
 export const currentUserProfile = () => async dispatch=>{
     try{
         dispatch(profileLoadingStart());
-        const res = await axios.get ("api/users/myprofile");
+        const res = await axios.get("api/users/myprofile");
         dispatch({
             type: GET_PROFILE,
             payload: res.data
