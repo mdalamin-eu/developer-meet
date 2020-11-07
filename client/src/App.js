@@ -12,6 +12,7 @@ import setAuthToken from '../src/Components/utlis/setAuthToken'
 import {connect} from 'react-redux'
 import jwt_decode from "jwt-decode";
 import Dashboard from './Components/Dashboard/Dashboard'
+import PrivateRoute from './Components/routing/PrivateRoute'
 
 
 
