@@ -10,7 +10,7 @@ export default function spinner () {
                 style={{
                     width:"200px",
                     margin: "auto",
-                    display:block
+                    display:"block"
                 }}
                 alt=""
                 />

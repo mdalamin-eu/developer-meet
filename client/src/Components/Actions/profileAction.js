@@ -5,6 +5,11 @@ import { GET_PROFILE, GET_PROFILES, PROFILE_ERROR,
 import {setAlert } from "./alert";
 //currentUserProfile, deleteAccount
 
+export const profileLoadingStart = () => async dispatch=>{
+    dispatch({
+        type: PROFILE_LOADING_START
+    })
+}
 
 export const currentUserProfile = () => async dispatch=>{
     try{
