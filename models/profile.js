@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const ProfileSchema = new mongoose. Schema({
 user:{
     type: Schema.Types.ObjectId,
-    ref: "user"
+    ref: "User"
 },
 handle: {
     type: String,
