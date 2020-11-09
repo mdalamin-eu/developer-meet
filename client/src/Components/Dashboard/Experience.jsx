@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import Moment from "react-moment"
+import React, { Component } from "react";
+import Moment from "react-moment";
 
 
 class Experience extends Component {
