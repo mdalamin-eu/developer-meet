@@ -7,10 +7,11 @@ import Experience from "./Experience"
 
 
 class Dashboard extends Component {
-    componentDidMount(){
+    componentDidMount(){ //life cycle hoks j data rendering korte sahojjo kore
         this.props.currentUserProfile();
     }
     render() {
+        //distucring kortachi 
         const { user } = this.props.auth;
         const { profile, loading } = this.props.profile;
         console.log(profile)
