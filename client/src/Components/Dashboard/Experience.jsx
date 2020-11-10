@@ -6,24 +6,29 @@ class Experience extends Component {
 
     render(){
         const { experience } = this.props;
+        console.log('hmm',experience)
         let experienceContent;
         if(experience && experience.length > 0) {
-            experienceContent = this.props.experience.map(exp=>(
-                <tr>     {/*for row---*/} 
-                    <td> {/*for column||*/}
-                    {exp.comapny}
+            console.log('kk', experience.length)
+            {
+                experienceContent = this.props.experience.map(exp=>(
+                    <tr>     {/*for row---*/} 
+                        <td> {/*for column||*/}
+                        {exp.company}
+                        </td>
+                <td>{exp.title}</td>
+                    <td>
+                <Moment format="DD/MM/YYYY">{exp.from}</Moment> - {exp.to === null?(
+                    "Now"
+                ) : (
+                <Moment format="DD/MM/YYYY">{exp.to}</Moment>
+                )}
                     </td>
-                    <td>exp.title</td>
-                <td>
-            <Moment format="YYYY/MM/DD">{exp.from}</Moment> - {exp.to === null?(
-                "Now"
-            ) : (
-            <Moment format="YYYY/MM/DD">{exp.to}</Moment>
-            )}
-                </td>
-                </tr>
-                // <button type="submit" className="btn btn-danger"></button>
-            ))
+                    </tr>
+                    // <button type="submit" className="btn btn-danger"></button>
+                ))
+            }
+           
         } else {
             experienceContent = <p>You have not yet add your experience</p>
         }

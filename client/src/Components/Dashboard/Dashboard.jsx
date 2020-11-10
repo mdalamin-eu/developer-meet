@@ -27,6 +27,7 @@ class Dashboard extends Component {
                         </p>
                         <Experience experience={profile.experience}/>
                     </div>
+                    
             
                 );
             }else{
