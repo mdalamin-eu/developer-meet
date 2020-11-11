@@ -118,7 +118,8 @@ exports.schoolBycode=  async (req, res) => {
 
       }
       eduDelete.school.splice(removeIndex, 1);
-      
+      await eduDelete.save();
+      res.json(foundProfile);
 
     }catch(err){
       res.status(500).send("server error")
