@@ -46,3 +46,7 @@ export const currentUserProfile = () => async dispatch=>{
 
 //     }
 // } 
+
+// export const addEducation = (data, history)=> async dispatch =>{
+
+// }

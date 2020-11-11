@@ -103,3 +103,24 @@ exports.schoolBycode=  async (req, res) => {
     }
   
   }
+
+
+  //Delete Schools BY id
+
+
+  exports.DeleteEdu = async (req, res) => {
+    try{
+      const eduDelete = await School.findOne({user:req.currentuser.id});
+      const eduId = eduDelete.school.map(school=>school._id.toString());
+      const removeIndex = eduId.imdexOf(req.params.school_id);
+      if(removeIndex === -1) {
+        return res.status(500).send("Server Error");
+
+      }
+      eduDelete.school.splice(removeIndex, 1);
+      
+
+    }catch(err){
+      res.status(500).send("server error")
+    }
+  }
