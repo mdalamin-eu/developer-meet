@@ -108,20 +108,24 @@ exports.schoolBycode=  async (req, res) => {
   //Delete Schools BY id
 
 
-  exports.DeleteEdu = async (req, res) => {
-    try{
-      const eduDelete = await School.findOne({user:req.currentuser.id});
-      const eduId = eduDelete.school.map(school=>school._id.toString());
-      const removeIndex = eduId.imdexOf(req.params.school_id);
-      if(removeIndex === -1) {
-        return res.status(500).send("Server Error");
+  // exports.DeleteEdu = async (req, res) => {
+  //   try{
+  //     console.log(req.params.id)
+  //     const school = await School.findOne({school_id:req.params.id});
+  //     console.log('jjj', school)
 
-      }
-      eduDelete.school.splice(removeIndex, 1);
-      await eduDelete.save();
-      res.json(foundProfile);
+  //     if(!school){
+  //       return res.status(404).json({msg:"the school not exists"});
+  //     }
 
-    }catch(err){
-      res.status(500).send("server error")
-    }
-  }
+  //     if (school.user.toString() !== req.user.id) {
+  //       return res.status(404).json({msg:"You are not authrized"});
+  //     }
+
+  //     await school.remove();
+  //     res.json({msg:"the school delete successfully"});
+
+  //   }catch(err){
+  //     res.status(500).send("server error B")
+  //   }
+  // }
