@@ -170,3 +170,14 @@ try {
   console.log(error);
 }
 }
+
+
+//Delete Education
+
+exports.deleteEdu = async (req, res) => {
+  try{
+
+  }catch(err){
+    res.status(500).send("server error")
+  }
+}
