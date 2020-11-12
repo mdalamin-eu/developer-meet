@@ -138,13 +138,35 @@ exports.Education= async (req, res)=> {
       return res.status(400).json({errors: errors.array()});
   }
 const {
-   school,
+   school_name,
+   school_id,
    degree,
    fieldofstudy,
    from,
    to,
    current,
-   description,
-   location,
+   address
+} = req.body;
+
+const newEdu = {
+  school_name,
+  school_id,
+  degree,
+  fieldofstudy,
+  from,
+  to,
+  current,
+  address
+};
+try {
+  const education = await School.findOne({user: req.user.id});
+  if (!education) {
+    res.status(404).send({msg:"User profile not found"});
+  }
+  profile.education.unshift(newEdu); //unshift mane hocche ekta object a data dukano.
+  await education.save();
+  res.json(profile);
+}catch (error) {
+  console.log(error);
 }
 }
