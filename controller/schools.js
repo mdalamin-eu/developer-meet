@@ -176,6 +176,7 @@ try {
 
 exports.deleteEdu = async (req, res) => {
   try{
+    const eduDelete=  await School.findOne({ user: req.user.id });
 
   }catch(err){
     res.status(500).send("server error")
