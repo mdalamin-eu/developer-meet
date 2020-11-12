@@ -21,7 +21,7 @@ exports.school= async (req, res) => {
         }
         else{
             newSchool= new School({
-                name:req.body.name,
+                school_name:req.body.name,
                 school_id:req.body.school_id,
                 address:req.body.address,
                 email:req.body.email,
@@ -129,3 +129,22 @@ exports.schoolBycode=  async (req, res) => {
   //     res.status(500).send("server error B")
   //   }
   // }
+
+
+  //Education
+exports.Education= async (req, res)=> {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) { 
+      return res.status(400).json({errors: errors.array()});
+  }
+const {
+   school,
+   degree,
+   fieldofstudy,
+   from,
+   to,
+   current,
+   description,
+   location,
+}
+}
