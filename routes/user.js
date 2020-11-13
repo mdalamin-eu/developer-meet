@@ -25,7 +25,7 @@ router.get('/myprofile',AuthGuard, ProfileController.Myprofile)
 router.patch('/experience', AuthGuard, ProfileController.Experience)
 router.delete('/delete-experience/:id', AuthGuard, ProfileController.DeleteExp)
 router.put('/education', AuthGuard, ProfileController.Education)
-
+router.delete('/delete-education/:id', AuthGuard, ProfileController.deleteEdu)
 
 // router.get('/:id',Posts.postById)
 router.get('/:id',User.userById)
