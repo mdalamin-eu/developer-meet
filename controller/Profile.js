@@ -194,7 +194,7 @@ exports.DeleteExp = async (req, res) =>{
     address
   };
   try {
-    const edu = await School.findOne({user: req.currentuser.id});
+    const edu = await Profile.findOne({user: req.currentuser.id});
     if (!edu) {
       res.status(404).send({msg:"User profile not found"});
     }
