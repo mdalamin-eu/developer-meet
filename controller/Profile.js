@@ -207,11 +207,18 @@ exports.DeleteExp = async (req, res) =>{
   
   //Delete Education
   
-  // exports.deleteEdu = async (req, res) => {
-  //   try{
-  //     const eduDelete=  await School.findOne({ user: req.currentuser.id });
-  
-  //   }catch(err){
-  //     res.status(500).send("server error")
-  //   }
-  // }
+  exports.deleteEdu = async (req, res) => {
+    try{
+      const eduDelete=  await Profile.findOne({ user: req.currentuser.id });
+      const eduId = eduDelete.education.map(edu => edu._id.toString());
+      const removeIndex = eduId.indexOf(req.params.edu_id);
+      if(removeIndex === -1) {
+          return res.status(500).send("Server error ED1")
+      }
+      eduDelete.education.splice(removeIndex, 1);
+      await eduDelete.save();
+      res.json(eduDelete);
+    }catch(err){
+      res.status(500).send("server error ED2")
+    }
+  }
