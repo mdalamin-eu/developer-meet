@@ -13,13 +13,35 @@ class Education extends Component {
         <td>{edu.school_name}</td>
         <td> {edu.degree} </td>
         <td> {edu.fieldofstudy} </td>
+        <td>
+        <Moment format="DD/MM/YYYY">{exp.from}</Moment> -{exp.to===null?(
+            "Now"
+        ):(
+            <Moment format="DD/MM/YYYY">{exp.to}</Moment>
+        )}
+        </td>
                 </tr>
             ))
         } 
-        let 
+        else{
+            educationContent = <p>You have not yet add your education</p>;
+
+        }
+        
         return (
             <div>
-                
+                <h4 className="mb-4">Education Credentials</h4>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>School</th>
+                            <th>Degree</th>
+                            <th>Fieldofstudy</th>
+                            <th>Year</th>
+                        </tr>
+                        {educationContent}
+                    </thead>
+                </table>
             </div>
         )
     }
