@@ -9,6 +9,7 @@ user:{
     type: Schema.Types.ObjectId,
     ref: "User"
 },
+
 handle: {
     type: String,
     required: true,
@@ -63,6 +64,9 @@ experience: [
             type: String
         }
     }
+],
+education: [
+
 ],
 social:{
     twitter:{

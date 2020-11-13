@@ -10,6 +10,6 @@ router.post('/school', AuthGuard, School.school)
 router.patch('/schooladd/:id', AuthGuard, School.schoolAddByUser)
 router.get('/school/:code', School.schoolBycode)
 // router.delete('/school/:id', School.DeleteEdu)
-router.patch('/education', AuthGuard, School.Education)
+
 
 module.exports = router;

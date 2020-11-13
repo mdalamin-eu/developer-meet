@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Auth = require("../middleware/authguard")
 const Profile = require("../models/Profile");
+const School = require('../models/Schools')
 const User = require("../models/User")
 const { check, validationResult}= require("express-validator/check")
 
@@ -163,3 +164,56 @@ exports.DeleteExp = async (req, res) =>{
         res.status(500).send("server error")
     }
 }
+
+
+  //Education
+  exports.Education= async (req, res)=> {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) { 
+        return res.status(400).json({errors: errors.array()});
+    }
+  const {
+     school_name,
+     school_id,
+     degree,
+     fieldofstudy,
+     from,
+     to,
+     current,
+     address
+  } = req.body;
+  console.log('hmm',req.body)
+  const newEdu = {
+    school_name,
+    school_id,
+    degree,
+    fieldofstudy,
+    from,
+    to,
+    current,
+    address
+  };
+  try {
+    const edu = await School.findOne({user: req.currentuser.id});
+    if (!edu) {
+      res.status(404).send({msg:"User profile not found"});
+    }
+    edu.education.unshift(newEdu); //unshift mane hocche ekta object a data dukano.
+    await edu.save();
+    res.json(edu);
+  }catch (error) {
+    console.log(error);
+  }
+  }
+  
+  
+  //Delete Education
+  
+  // exports.deleteEdu = async (req, res) => {
+  //   try{
+  //     const eduDelete=  await School.findOne({ user: req.currentuser.id });
+  
+  //   }catch(err){
+  //     res.status(500).send("server error")
+  //   }
+  // }
