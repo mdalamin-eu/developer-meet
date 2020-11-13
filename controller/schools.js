@@ -147,7 +147,7 @@ const {
    current,
    address
 } = req.body;
-
+console.log('hmm',req.body)
 const newEdu = {
   school_name,
   school_id,
@@ -159,11 +159,11 @@ const newEdu = {
   address
 };
 try {
-  const education = await School.findOne({user: req.user.id});
-  if (!education) {
+  const edu = await School.findOne({user: req.currentuser.id});
+  if (!edu) {
     res.status(404).send({msg:"User profile not found"});
   }
-  profile.education.unshift(newEdu); //unshift mane hocche ekta object a data dukano.
+  edu.education.unshift(newEdu); //unshift mane hocche ekta object a data dukano.
   await education.save();
   res.json(profile);
 }catch (error) {
@@ -174,11 +174,11 @@ try {
 
 //Delete Education
 
-exports.deleteEdu = async (req, res) => {
-  try{
-    const eduDelete=  await School.findOne({ user: req.user.id });
+// exports.deleteEdu = async (req, res) => {
+//   try{
+//     const eduDelete=  await School.findOne({ user: req.currentuser.id });
 
-  }catch(err){
-    res.status(500).send("server error")
-  }
-}
+//   }catch(err){
+//     res.status(500).send("server error")
+//   }
+// }
