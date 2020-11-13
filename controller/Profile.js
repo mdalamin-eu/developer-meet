@@ -174,7 +174,6 @@ exports.DeleteExp = async (req, res) =>{
     }
   const {
      school_name,
-     school_id,
      degree,
      fieldofstudy,
      from,
@@ -185,7 +184,6 @@ exports.DeleteExp = async (req, res) =>{
   console.log('hmm',req.body)
   const newEdu = {
     school_name,
-    school_id,
     degree,
     fieldofstudy,
     from,
