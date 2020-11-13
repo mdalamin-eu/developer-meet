@@ -211,7 +211,7 @@ exports.DeleteExp = async (req, res) =>{
     try{
       const eduDelete=  await Profile.findOne({ user: req.currentuser.id });
       const eduId = eduDelete.education.map(edu => edu._id.toString());
-      const removeIndex = eduId.indexOf(req.params.edu_id);
+      const removeIndex = eduId.indexOf(req.params.id);
       if(removeIndex === -1) {
           return res.status(500).send("Server error ED1")
       }
