@@ -14,10 +14,10 @@ class Education extends Component {
         <td> {edu.degree} </td>
         <td> {edu.fieldofstudy} </td>
         <td>
-        <Moment format="DD/MM/YYYY">{exp.from}</Moment> -{exp.to===null?(
+        <Moment format="DD/MM/YYYY">{edu.from}</Moment> -{edu.to===null?(
             "Now"
         ):(
-            <Moment format="DD/MM/YYYY">{exp.to}</Moment>
+            <Moment format="DD/MM/YYYY">{edu.to}</Moment>
         )}
         </td>
                 </tr>
@@ -30,13 +30,13 @@ class Education extends Component {
         
         return (
             <div>
-                <h4 className="mb-4">Education Credentials</h4>
+                <h4 className="mb-4">Education</h4>
                 <table className="table">
                     <thead>
                         <tr>
                             <th>School</th>
                             <th>Degree</th>
-                            <th>Fieldofstudy</th>
+                            <th>Field Of Study</th>
                             <th>Year</th>
                         </tr>
                         {educationContent}

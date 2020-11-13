@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { currentUserProfile } from "../Actions/profileAction";
 import Spinner from "../common/spinner";
 import Experience from "./Experience"
+import Education from './Education';
 
 
 class Dashboard extends Component {
@@ -27,6 +28,7 @@ class Dashboard extends Component {
                 Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
                         </p>
                         <Experience experience={profile.experience}/>
+                        <Education education={profile.education}/>
                     </div>
                     
             
@@ -48,7 +50,7 @@ class Dashboard extends Component {
                 <div className= "container">
                     <div className= "row">
                         <div className="col-md-12">
-                            <h1 className= "display-4">Dashboard</h1>
+                            <h1 className= "display-4">Profile</h1>
                             {dashboardContent}
                         </div>
                     </div>
