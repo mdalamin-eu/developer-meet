@@ -66,7 +66,33 @@ experience: [
     }
 ],
 education: [
-
+{
+    school_name:{
+        type: String,
+        required: true
+    },
+    degree:{
+        type:String,
+        required:true
+    },
+    fieldofstudy:{
+    type:String,
+    required: true
+    },
+    to:{
+        type: String
+    },
+    from:{
+        type:String
+    },
+    current:{
+        type: Boolean,
+        default: false
+    },
+    address:{
+        type: String
+    }
+}
 ],
 social:{
     twitter:{
