@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { currentUserProfile } from "../Actions/profileAction";
 import Spinner from "../common/spinner";
-// import ProfileAction from ""
+import ProfileAction from "../utlis/profileAction"
 import Experience from "./Experience"
 import Education from './Education';
 
@@ -28,6 +28,7 @@ class Dashboard extends Component {
                         <p className = "lead text-muted">
                 Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
                         </p>
+                        <ProfileAction/>
                         <Experience experience={profile.experience}/>
                         <Education education={profile.education}/>
                     </div>
