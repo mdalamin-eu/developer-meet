@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { currentUserProfile } from "../Actions/profileAction";
 import Spinner from "../common/spinner";
+// import ProfileAction from ""
 import Experience from "./Experience"
 import Education from './Education';
 
