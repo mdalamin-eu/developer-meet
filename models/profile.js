@@ -25,6 +25,9 @@ status:{
     type: String,   //what is status?
     required: true
 },
+location:{
+    type:String
+},
 skills:{
     type: [String],  //why we use this []
     required: true
