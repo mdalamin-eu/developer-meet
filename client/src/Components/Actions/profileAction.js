@@ -27,6 +27,21 @@ export const currentUserProfile = () => async dispatch=>{
     }
 };
 
+//clearte Profile
+
+export const createProfile = (profileData, history, isEdit= false) => async dispatch =>{
+   try{
+       const config = {
+           headers: { "Content-Type":"application/json"}
+       };
+       dispatch(profileLoadingStart());
+       const res = await axios.post("api/profile", profileData, config);
+       
+   }catch (err) {
+       const errors = err.response.data.errors;
+       
+   }
+}
 
 //delete experience by id
 
