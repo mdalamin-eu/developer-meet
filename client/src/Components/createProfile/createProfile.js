@@ -77,6 +77,31 @@ class CreateProfile extends Component {
         }
     }
     render() {
+        const {
+            company,
+            website,
+            location,
+            bio,
+            status,
+            githubusername,
+            handle,
+            skills,
+            youtube,
+            facebook,
+            twitter,
+            instagram,
+            linkedin,
+            snapchat
+        }= this.state;
+        const {profile}= this.props.profile;
+        let socialInputs;
+        if(displaySocialInouts){
+            scoialInput=(
+                <div>
+                    
+                </div>
+            )
+        }
         return (
             <div>
                 
