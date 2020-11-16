@@ -98,13 +98,20 @@ class CreateProfile extends Component {
         if(displaySocialInouts){
             scoialInput=(
                 <div>
-                    
+
                 </div>
             )
         }
         return (
             <div>
-                
+                <inputGroup
+                placeholder = "Twitter Profile URL"
+                name="Twitter"
+                value= {twitter}
+                icon="fab fa-twitter"
+                onChange= {this.onChange}
+                error={errors.twitter}
+                />
             </div>
         )
     }
