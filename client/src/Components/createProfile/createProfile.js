@@ -112,6 +112,14 @@ class CreateProfile extends Component {
                 onChange= {this.onChange}
                 error={errors.twitter}
                 />
+                <inputGroup
+                name="facebook"
+                placeholder="Facebook profile URL"
+                value={facebook}
+                icon="fab fa-facebook"
+                onChange={this.onChange}
+                error={errors.facebook}
+                />
             </div>
         )
     }
