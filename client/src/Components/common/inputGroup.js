@@ -1,5 +1,5 @@
 import React from 'react'
-import classnames from "classnames;
+import classnames from "classnames"
 
  const InputGroup=({
 name,
@@ -24,6 +24,7 @@ onChange
                 placeholder={placeholder}
                 value={value}
                 name={name}
+                type={type}
                 onChange={onChange}
                 />
                 {error && <div className="invalid-feedback">{error}</div>}
