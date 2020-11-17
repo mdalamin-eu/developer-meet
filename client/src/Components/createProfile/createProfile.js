@@ -163,7 +163,16 @@ class CreateProfile extends Component {
                                 Let's get some information to make your profile stand out
                             </p>
                             <small className= "d-block pb-3">*=required filed</small>
-
+                        <form onSubmit={this.onSubmit}>
+                            <TextFieldGroup
+                            name="handle"
+                            placeholder="handle"
+                            value={handle}
+                            onChange={this.onChange}
+                            error={errors.handle}
+                            info="A unique handle for your profile URL example company name website profile name"
+                            />
+                        </form>
                         </div>
                     </div>
 
