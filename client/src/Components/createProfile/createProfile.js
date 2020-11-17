@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import {WithRouter, Redirect } from "react-router-dom"
 import TextFieldGroup from "../common/TextFieldGroup"
-import { createProfile } from '../Actions/profileAction';
-import { object } from 'prop-types';
+import InputGroup from "../common/inputGroup"
+import SelectListGroup from "../common/SelectListGroup"
+import TextAreaField from "../common/TextAreaField"
+import { createProfile, currentUserProfile} from '../Actions/profileAction';
 
 class CreateProfile extends Component {
     state ={
@@ -96,30 +98,77 @@ class CreateProfile extends Component {
         const {profile}= this.props.profile;
         let socialInputs;
         if(displaySocialInouts){
-            scoialInput=(
+            socialInputs=(
                 <div>
+                     <InputGroup
+                            placeholder = "Twitter Profile URL"
+                            name="Twitter"
+                            value= {twitter}
+                            icon="fab fa-twitter"
+                            onChange= {this.onChange}
+                            error={errors.twitter}
+                            />
+                            <InputGroup
+                            name="facebook"
+                            placeholder="Facebook profile URL"
+                            value={facebook}
+                            icon="fab fa-facebook"
+                            onChange={this.onChange}
+                            error={errors.facebook}
+                            />
+                            <InputGroup
+                            name="youtube"
+                            placeholder="Youyube Profile URL"
+                            value={youtube}
+                            icon="fab fa-youtube"
+                            onChange={this.onChange}
+                            error={errors.youtube}
+                            />
+                            <InputGroup
+                            name="instagram"
+                            placeholder="Instagram Profile URL"
+                            value={instagram}
+                            icon="fab fa-instagram"
+                            onChange={this.onChange}
+                            error={errors.instagram}
+                            />
+                            <InputGroup
+                            name="snapchat"
+                            placeholder="Snapchat Profile URL"
+                            value={snapchat}
+                            icon="fab fa-snapchat"
+                            onChange={this.onChange}
+                            error= {errors.snapchat}
+                            />
+                </div>
+            );
+        }
+        const options = [
+            { label: "* Select Profissional Status", value:0},
+            {lable: "Developer", value:"Developer"},
+            {label:"Junior Developer", value: "Junior Developer"},
+            {label:"Senior Developer", value: "Senior Develope"},
+            {lable:"Manager", value:"Manager"},
+            {label:"Student or Learning", value:"Student or Learning"},
+            {label:"Instructor or Teacher", value:"Instructor or Teacher"},
+            {lable:"Intern", value:"Intern"}
+        ];
+        return (
+            <div className="create-profile">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-8 m-auto">
+                            <h1 className= "display-4  text-center">Create your profile</h1>
+                            <p className= "lead text-center">
+                                Let's get some information to make your profile stand out
+                            </p>
+                            <small className= "d-block pb-3">*=required filed</small>
+
+                        </div>
+                    </div>
 
                 </div>
-            )
-        }
-        return (
-            <div>
-                <inputGroup
-                placeholder = "Twitter Profile URL"
-                name="Twitter"
-                value= {twitter}
-                icon="fab fa-twitter"
-                onChange= {this.onChange}
-                error={errors.twitter}
-                />
-                <inputGroup
-                name="facebook"
-                placeholder="Facebook profile URL"
-                value={facebook}
-                icon="fab fa-facebook"
-                onChange={this.onChange}
-                error={errors.facebook}
-                />
+               
             </div>
         )
     }
