@@ -48,7 +48,7 @@ class CreateProfile extends Component {
             linkedin,
             snapchat
         } =this.state;
-        const CreateProfileData = {
+        const createProfileData = {
             company,
             website,
             location,
@@ -82,6 +82,7 @@ class CreateProfile extends Component {
         const {
             company,
             website,
+            displaySocialInouts,
             location,
             bio,
             status,
@@ -116,6 +117,7 @@ class CreateProfile extends Component {
                             onChange={this.onChange}
                             error={errors.facebook}
                             />
+                        
                             <InputGroup
                             name="youtube"
                             placeholder="Youyube Profile URL"
@@ -176,7 +178,7 @@ class CreateProfile extends Component {
                             name="status"
                             value={status}
                             placeholder="Status"
-                            option={option}
+                            options={options}
                             onChange={this.onChange}
                             info="Select Status"
                             error={errors.status}

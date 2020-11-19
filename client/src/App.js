@@ -14,6 +14,7 @@ import jwt_decode from "jwt-decode";
 import Dashboard from './Components/Dashboard/Dashboard'
 import PrivateRoute from './Components/routing/PrivateRoute'
 import store from './store'
+import CreateProfile from './Components/createProfile/createProfile';
 // Check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -47,6 +48,9 @@ class App extends Component {
             <Route exact path="/auth/activate/:id" component={Activate}/>
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/create-profile" component={CreateProfile}/>
             </Switch>
             </section>
 <Footer/>
