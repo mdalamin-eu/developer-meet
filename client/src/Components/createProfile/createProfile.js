@@ -117,7 +117,14 @@ class CreateProfile extends Component {
                             onChange={this.onChange}
                             error={errors.facebook}
                             />
-                        
+                        <InputGroup
+                            name="linkedin"
+                            placeholder="Linkedin profile URL"
+                            value={linkedin}
+                            icon="fab fa-linkedin"
+                            onChange={this.onChange}
+                            error={errors.linkedin}
+                            />
                             <InputGroup
                             name="youtube"
                             placeholder="Youyube Profile URL"
