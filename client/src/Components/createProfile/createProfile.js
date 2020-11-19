@@ -172,6 +172,16 @@ class CreateProfile extends Component {
                             error={errors.handle}
                             info="A unique handle for your profile URL example company name website profile name"
                             />
+                            <SelectListGroup
+                            name="status"
+                            value={status}
+                            placeholder="Status"
+                            option={option}
+                            onChange={this.onChange}
+                            info="Select Status"
+                            error={errors.status}
+                            />
+                            
                         </form>
                         </div>
                     </div>
