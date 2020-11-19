@@ -220,7 +220,31 @@ class CreateProfile extends Component {
                             onChange={this.onChange}
                             error={errors.skills}
                             info="If you want to get your latest  repos, include your github usernames"
-                            
+                            />
+                             <TextFieldGroup
+                             name="bio"
+                             placeholder= "Short Bio"
+                             value={bio}
+                             onChange={this.onChange}
+                             error={errors.bio}
+                             info="Tell us a little about you self"
+                            />
+                            <div className="mb-3">
+                                <button>
+                                    type="button"
+                                    onClick={()=>{
+                                        this.setState(prevState=>({
+                                            displaySocialInouts: !prevState.displaySocialInouts
+                                        }));
+                                    }}
+                                    className="btn btn-light">
+                                    Add Social Networks Links
+                                </button>
+                                <span className="text-muted"> Optional</span>
+                            </div>
+                            {socialInputs}
+                            <input
+                            type="submit" value="submit" className="btn btn-info btn-block mt-4"
                             />
                         </form>
                         </div>
@@ -229,7 +253,7 @@ class CreateProfile extends Component {
                 </div>
                
             </div>
-        )
+        );
     }
 }
 export default  CreateProfile;
