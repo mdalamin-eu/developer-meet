@@ -181,7 +181,47 @@ class CreateProfile extends Component {
                             info="Select Status"
                             error={errors.status}
                             />
+                            <TextFieldGroup
+                            name="company"
+                            placeholder="Company Name"
+                            value={company}
+                            info="could be your own company or you work for one"
+                            error= {errors.company}
+                            onChange= {this.onChange}
+                            />
+                            <TextFieldGroup
+                            name="website"
+                            value= {website}
+                            placeholder="Website"
+                            info="could be your own website"
+                            error={errors.website}
+                            onChange= {this.onChange}
+                            />
+                            <TextFieldGroup
+                            name= "location"
+                            placeholder="Location"
+                            value={location}
+                            info="City (eg. Helsinki)"
+                            onChange={this.onChange}
+                            error={errors.location}
+                            />
+                            <TextFieldGroup
+                            name="skills"
+                            value= {skills}
+                            placeholder= "Skills"
+                            onChange={this.onChange}
+                            error= {errors.skills}
+                            info= "please use comma separate values(eg, HTML, Python, Javascript)"
+                            />
+                            <TextFieldGroup
+                            name= "githubusername"
+                            value={githubusername}
+                            placeholder= "githubusername"
+                            onChange={this.onChange}
+                            error={errors.skills}
+                            info="If you want to get your latest  repos, include your github usernames"
                             
+                            />
                         </form>
                         </div>
                     </div>
