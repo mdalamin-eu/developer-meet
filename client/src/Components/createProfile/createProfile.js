@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {WithRouter, Redirect } from "react-router-dom"
+import {connect} from "react-redux"
+import {WithRouter, Redirect, withRouter } from "react-router-dom"
 import TextFieldGroup from "../common/TextFieldGroup"
 import InputGroup from "../common/inputGroup"
 import SelectListGroup from "../common/SelectListGroup"
@@ -23,7 +24,7 @@ class CreateProfile extends Component {
         youtube:"",
         instagram:"",
         snapchat:"",
-        errors:{}     
+        errors: {}     
     };
     onChange = e => {
         this.setState({
@@ -64,22 +65,23 @@ class CreateProfile extends Component {
             linkedin,
             snapchat
         };
-        this.props.CreateProfile(createProfileData, this.props.history);
+        this.props.createProfile(createProfileData, this.props.history);
 
     };
-    componentDidMount(){
-        this.props.currentUserProfile();
-    }
-    componentDidUpdate(prevProps) {
-        if(
-            this.props.profile.profile && 
-            object.keys(this.props.profile.profile).length > 0
-        ){
-            return this.props.history.push("/dashboard");
-        }
-    }
+    // componentDidMount(){
+    //     this.props.currentUserProfile();
+    // }
+    // componentDidUpdate(prevProps) {
+    //     if(
+    //         this.props.profile.profile && 
+    //         Object.keys(this.props.profile.profile).length > 0
+    //     ){
+    //         return this.props.history.push("/dashboard");
+    //     }
+    // }
     render() {
         const {
+            errors,
             company,
             website,
             displaySocialInouts,
@@ -96,14 +98,16 @@ class CreateProfile extends Component {
             linkedin,
             snapchat
         }= this.state;
-        const {profile}= this.props.profile;
+
+        //const { profile } = this.props.profile;
+
         let socialInputs;
         if(displaySocialInouts){
             socialInputs=(
                 <div>
                      <InputGroup
                             placeholder = "Twitter Profile URL"
-                            name="Twitter"
+                            name="twitter"
                             value= {twitter}
                             icon="fab fa-twitter"
                             onChange= {this.onChange}
@@ -154,13 +158,13 @@ class CreateProfile extends Component {
         }
         const options = [
             { label: "* Select Profissional Status", value:0},
-            {lable: "Developer", value:"Developer"},
+            {label: "Developer", value:"Developer"},
             {label:"Junior Developer", value: "Junior Developer"},
             {label:"Senior Developer", value: "Senior Develope"},
-            {lable:"Manager", value:"Manager"},
+            {label:"Manager", value:"Manager"},
             {label:"Student or Learning", value:"Student or Learning"},
             {label:"Instructor or Teacher", value:"Instructor or Teacher"},
-            {lable:"Intern", value:"Intern"}
+            {label:"Intern", value:"Intern"}
         ];
         return (
             <div className="create-profile">
@@ -239,7 +243,7 @@ class CreateProfile extends Component {
                              info="Tell us a little about you self"
                             />
                             <div className="mb-3">
-                                <button>
+                                <button
                                     type="button"
                                     onClick={()=>{
                                         this.setState(prevState=>({
@@ -265,4 +269,7 @@ class CreateProfile extends Component {
         );
     }
 }
-export default  CreateProfile;
+const mapStateToProps = state => ({
+    profile: state.profile
+});
+export default connect(mapStateToProps,{createProfile, currentUserProfile})(withRouter(CreateProfile));

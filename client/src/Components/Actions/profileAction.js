@@ -36,7 +36,7 @@ export const createProfile = (profileData, history, isEdit= false) => async disp
            headers: { "Content-Type":"application/json"}
        };
        dispatch(profileLoadingStart());
-       const res = await axios.post("api/profile", profileData, config);
+       const res = await axios.post("api/users/profile", profileData, config);
        dispatch({
            type: GET_PROFILE,
            payload: res.data
