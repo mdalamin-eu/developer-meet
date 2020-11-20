@@ -41,14 +41,15 @@ export const createProfile = (profileData, history, isEdit= false) => async disp
            type: GET_PROFILE,
            payload: res.data
        });
-       dispatch( setAlert (isEdit? "Profile Update" : "Profile Created", "success") );
+       dispatch( setAlert (isEdit ? "Profile Update" : "Profile Created", "success") );
        if(!isEdit){
            return history.push("/dashboard");
        }
-   }catch (err) {
-       const errors = err.response.data.errors;
-       if(errors){
-           errors.forEach(error => dispatch(setAlert(error.msg, "denger")));
+   } catch (err) {
+    //    const errors = err.response.data.errors;
+    console.log("amm", err)
+       if(err){
+           err.forEach(error => dispatch(setAlert(error.msg, "denger")));
        }
        dispatch({ type: PROFILE_ERROR,
     payload:{msg:err.response.statusText, status:err.response.status}
