@@ -32,6 +32,7 @@ export const currentUserProfile = () => async dispatch=>{
 
 export const createProfile = (profileData, history, isEdit= false) => async dispatch =>{
    try{
+    console.log('what data going',profileData)
        const config = {
            headers: { "Content-Type":"application/json"}
        };

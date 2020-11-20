@@ -32,7 +32,10 @@ class CreateProfile extends Component {
         });
     };
     onSubmit= e=> {
+        // reload stop 
         e.preventDefault();
+
+        // distructering
         const {
             company,
             website,
@@ -49,6 +52,8 @@ class CreateProfile extends Component {
             linkedin,
             snapchat
         } =this.state;
+
+        // create object
         const createProfileData = {
             company,
             website,
@@ -65,20 +70,21 @@ class CreateProfile extends Component {
             linkedin,
             snapchat
         };
+        console.log('console what',createProfileData)
         this.props.createProfile(createProfileData, this.props.history);
 
     };
-    // componentDidMount(){
-    //     this.props.currentUserProfile();
-    // }
-    // componentDidUpdate(prevProps) {
-    //     if(
-    //         this.props.profile.profile && 
-    //         Object.keys(this.props.profile.profile).length > 0
-    //     ){
-    //         return this.props.history.push("/dashboard");
-    //     }
-    // }
+    componentDidMount(){
+        this.props.currentUserProfile();
+    }
+    componentDidUpdate(prevProps) {
+        if(
+            this.props.profile.profile && 
+            Object.keys(this.props.profile.profile).length > 0
+        ){
+            return this.props.history.push("/dashboard");
+        }
+    }
     render() {
         const {
             errors,
@@ -99,7 +105,7 @@ class CreateProfile extends Component {
             snapchat
         }= this.state;
 
-        //const { profile } = this.props.profile;
+        const { profile } = this.props.profile;
 
         let socialInputs;
         if(displaySocialInouts){
@@ -234,7 +240,7 @@ class CreateProfile extends Component {
                             error={errors.skills}
                             info="If you want to get your latest  repos, include your github usernames"
                             />
-                             <TextFieldGroup
+                             <TextAreaField
                              name="bio"
                              placeholder= "Short Bio"
                              value={bio}
@@ -247,6 +253,7 @@ class CreateProfile extends Component {
                                     type="button"
                                     onClick={()=>{
                                         this.setState(prevState=>({
+    
                                             displaySocialInouts: !prevState.displaySocialInouts
                                         }));
                                     }}
@@ -270,6 +277,6 @@ class CreateProfile extends Component {
     }
 }
 const mapStateToProps = state => ({
-    profile: state.profile
+    profile: state.profileData
 });
 export default connect(mapStateToProps,{createProfile, currentUserProfile})(withRouter(CreateProfile));
