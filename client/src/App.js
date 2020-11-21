@@ -15,6 +15,7 @@ import Dashboard from './Components/Dashboard/Dashboard'
 import PrivateRoute from './Components/routing/PrivateRoute'
 import store from './store'
 import CreateProfile from './Components/createProfile/createProfile';
+import AddExperience from './Components/profile-form/AddExperience'
 // Check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -51,6 +52,9 @@ class App extends Component {
             </Switch>
             <Switch>
               <PrivateRoute exact path="/create-profile" component={CreateProfile}/>
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/add-experience" component={AddExperience}/>
             </Switch>
             </section>
 <Footer/>

@@ -86,6 +86,42 @@ class AddExperience extends Component {
                                 onChange={this.onChange}
                                 />
                                 <h6>From Date</h6>
+                                <TextFieldGroup
+                                name="from"
+                                type="date"
+                                value={from}
+                                onChange={this.onChange}
+                                />
+                                <div className="form-check mb-4">
+                                    <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    name="current"
+                                    value={current}
+                                    checked={current}
+                                    onChange={this.onChange}
+                                    id="current"
+                                    />
+                                    <label htmlFor="current" className="form-check-label">
+                                        Current Job
+                                    </label>
+                                 </div>
+                                 <h6>To Date</h6>
+                                 <TextFieldGroup
+                                 name= "to"
+                                 type="date"
+                                 value={to}
+                                 onChange={this.onChange}
+                                 disabled={ disabled?"disabled":""}
+                                 />
+                                 <TextAreaField
+                                 placeholder="Job Description"
+                                 name="description"
+                                 value={description}
+                                 onChange={this.onChange}
+                                 info="Tell us about your position"
+                                 />
+                                 <input type="submit" value="submit" className="btn btn-info btn-block mt-4"/>
                             </form>
                         </div>
                     </div>
@@ -95,4 +131,4 @@ class AddExperience extends Component {
         )
     }
 }
-export default  AddExperience 
+export default  connect (null,{addExperience}) (withRouter(AddExperience )) 
