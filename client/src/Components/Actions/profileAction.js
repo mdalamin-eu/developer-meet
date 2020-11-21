@@ -66,7 +66,8 @@ try{
             "Content-Type": "application/json"
         }
     };
-    const res = await axios.put("api/users/experience", data, config);
+    console.log("aaa",data)
+    const res = await axios.patch("api/users/experience", data, config);
     dispatch({
         type: UPDATE_PROFILE,
         payload: res.data

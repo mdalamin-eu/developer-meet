@@ -30,17 +30,26 @@ class AddExperience extends Component {
     };
     onSubmit = e => {
         e.preventDefault();
-    
-    const addExperience= {
-        company: this.state.company,
-        title:this.state.to,
-        to: this.state.to,
-        from: this.state.from,
-        current:this.state.current,
-        disabled:this.state.disabled,
-        location:this.state.location,
-        description:this.state.description
-    };
+        const {company,
+            location,
+            title,
+            to,
+            from,
+            current,
+            disabled,
+            description
+        } = this.state
+        
+    const addExperience = {
+        company,
+        location,
+        title,
+        to,
+        from,
+        current,
+        disabled,
+        description
+    }
     this.props.addExperience(addExperience, this.props.history);
     };
     render() {
@@ -101,7 +110,7 @@ class AddExperience extends Component {
                                     name="current"
                                     value={current}
                                     checked={current}
-                                    onChange={this.onChange}
+                                    onChange={this.onCheck}
                                     id="current"
                                     />
                                     <label htmlFor="current" className="form-check-label">
