@@ -83,10 +83,10 @@ education: [
     required: true
     },
     to:{
-        type: String
+        type: Date
     },
     from:{
-        type:String
+        type:Date
     },
     current:{
         type: Boolean,
