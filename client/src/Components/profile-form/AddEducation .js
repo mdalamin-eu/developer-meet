@@ -25,7 +25,7 @@ class AddEducation extends Component {
     onCheck = () => {
         this.setState({
             current: !this.state.current,
-            disable: !this.state.disabled,
+            disabled: !this.state.disabled,
             to: ""
         });
     };
@@ -70,10 +70,88 @@ class AddEducation extends Component {
             location
         }= this.state;
         return (
-            <div>
-                
+            <div className="add-experiance">
+                <div className= "container">
+                    <div className= "row">
+                        <div className="col-md-8 m-auto">
+                            <Link to="/dashboard" className="btn btn-light">
+                                Go Back
+                            </Link>
+                            <h1 className="display-4 text-center">Add Education</h1>
+                            <p className="lead text-center">
+                                Add your school or degree that you have had in the past or current 
+                            </p>
+                            <small className= "d-block pb-3">*=requred fields</small>
+                            <form onSubmit={this.onSubmit}>
+                                <TextFieldGroup
+                                name="school"
+                                placeholder="*School"
+                                value= {school}
+                                onChange={this.onChange}
+                                required
+                                />
+                                <TextFieldGroup
+                                name= "degree"
+                                placeholder= "*degree"
+                                value={degree}
+                                onChange={this.onChange}
+                                required
+                                />
+                                <TextFieldGroup
+                                name="fieldofstudy"
+                                placeholder="Field of Study"
+                                value={fieldofstudy}
+                                onChange={this.onChange}
+                                />
+                                <TextFieldGroup
+                                name="location"
+                                placeholder="Location"
+                                value={location}
+                                onChange={this.onChange}
+                                />
+                                <h6>From Date</h6>
+                                <TextFieldGroup
+                                name="from"
+                                type="date"
+                                value={from}
+                                onChange={this.onChange}
+                                />
+                                <div className="form-check mb-4"S>
+                                    <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    name="current"
+                                    value={current}
+                                    checked={current}
+                                    onChange={this.onCheck}
+                                    id="current"
+                                    />
+                                    <label htmlFor="current" className="form-check-label">
+                                        Current Study
+                                    </label>
+                                </div>
+                                <h6>To Date</h6>
+                                <TextFieldGroup
+                                name="to"
+                                type="date"
+                                value={to}
+                                onChange={this.onChange}
+                                disabled={disabled ? "disabled":""}
+                                />
+                                <TextAreaGroup
+                                placeholder="Job Description"
+                                name="description"
+                                value={description}
+                                onChange={this.onChange}
+                                info="Tell us about your position"
+                                />
+                                <input type="submit" value="submit" className="btn btn-info btn-block mt-4" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
 }
-export default AddEducation 
+export default connect( null, {addEducation})(withRouter(AddEducation)); 
