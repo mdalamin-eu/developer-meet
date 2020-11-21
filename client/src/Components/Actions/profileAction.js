@@ -59,14 +59,14 @@ export const createProfile = (profileData, history, isEdit= false) => async disp
 };
 
 //add Experience
-export const addExperience= (data, history) => async dispatch => {
+export const addExperience = (data, history) => async dispatch => {
 try{
     const config = {
         headers: {
-            "Content-Type":"application/json"
+            "Content-Type": "application/json"
         }
     };
-    const res = await axios.put("api/users/experiences", data, config);
+    const res = await axios.put("api/users/experience", data, config);
     dispatch({
         type: UPDATE_PROFILE,
         payload: res.data
@@ -77,7 +77,7 @@ try{
     const errors = err.response.data.errors;
 
     if( errors ){
-        errors.forEach(error=>dispatch(setAlert(errors.msg, "danger")));
+        errors.forEach(error =>dispatch(setAlert(errors.msg, "danger")));
     }
     dispatch({
         type: PROFILE_ERROR,

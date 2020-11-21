@@ -6,26 +6,28 @@ import { Link, withRouter } from 'react-router-dom';
 import {addExperience} from "../Actions/profileAction"
 class AddExperience extends Component {
     state= {
-        company:"",
-        title:"",
-        to:"",
+        company: "",
+        title: "",
+        to: "",
         from:"",
-        current:false,
-        disabled:false,
-        location:"",
-        description:""
+        current: false,
+        disabled: false,
+        location: "",
+        description: ""
     };
-    onChange = e=>{
-        this.setState({[e.targert.name]:e.target.value});
 
+    onChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     };
-    onCheck=e=> {
+    onCheck= e => {
         this.setState({
             disabled: !this.state.disabled,
             current: !this.state.current,
             to: ""
         });
-    }
+    };
     onSubmit = e => {
         e.preventDefault();
     
