@@ -7,7 +7,7 @@ import {addEducation} from '../Actions/profileAction'
 
 class AddEducation extends Component {
     state={
-        school:"",
+        school_name:"",
         degree: "",
         fieldofstudy: "",
         to: "",
@@ -33,7 +33,7 @@ class AddEducation extends Component {
         e.preventDefault();
         
         const {
-        school,
+        school_name,
         degree,
         fieldofstudy,
         to,
@@ -45,7 +45,7 @@ class AddEducation extends Component {
         }= this.state
 
     const addEducation = {
-        school,
+        school_name,
         degree,
         fieldofstudy,
         to,
@@ -59,7 +59,7 @@ class AddEducation extends Component {
     };
     render() {
         const  {
-            school,
+            school_name,
             degree,
             fieldofstudy,
             to,
@@ -84,9 +84,9 @@ class AddEducation extends Component {
                             <small className= "d-block pb-3">*=requred fields</small>
                             <form onSubmit={this.onSubmit}>
                                 <TextFieldGroup
-                                name="school"
+                                name="school_name"
                                 placeholder="*School"
-                                value= {school}
+                                value= {school_name}
                                 onChange={this.onChange}
                                 required
                                 />
