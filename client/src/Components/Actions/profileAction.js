@@ -88,6 +88,35 @@ try{
 };
 
 
+//add education
+export const addEducation = (data, history) => async dispatch => {
+    try{
+        const config = {
+            headers: {
+                "Content-Type":"application/json"
+            }
+        };
+        const res = await axios.put("api/users/education", data, config);
+
+        dispatch({
+            type:UPDATE_PROFILE,
+            payload: res.data
+        });
+        dispatch(setAlert("Update profile by education", "success"));
+        history.push("/dashboard");
+
+    } catch (err) {
+        const errors = err.response.data.errors;
+    
+    if (errors) {
+        errors.forEach(error=> dispatch(setAlert(error.msg, "danger")));
+    }
+    dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText,status:err.response.status}
+    })
+}
+}
 //delete experience by id
 
 // export const deleteExperience = id => async dispatch => {
