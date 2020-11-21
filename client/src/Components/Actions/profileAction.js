@@ -119,22 +119,30 @@ export const addEducation = (data, history) => async dispatch => {
 }
 //delete experience by id
 
-// export const deleteExperience = id => async dispatch => {
-//     try{
-//         const config={
-//             headers: {
-//                 "Content-Type": "application/json"
-//             }
-//         };
-//         const res = await axios.delete(`api/users/experience/${id}`, config);
-//         dispatch({ type:GET_PROFILE,
-//         payload: res.data
-//     });
-//     dispatch (setAlert("Successfully deleted experince"))
-//     } catch(err){
+export const deleteExperience = id => async dispatch => {
+    try{
+        const config={
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+        const res = await axios.delete(`api/users/experience/${id}`, config);
+        dispatch({ type:GET_PROFILE,
+        payload: res.data
+    });
+    dispatch (setAlert("Successfully deleted experince"))
+    } catch(err){
+        const errors = err.response.data.errors;
+        if(errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+        }
+        dispatch({
+            type:PROFILE_ERROR,
+            payload:{msg: err.response.statusText, status: err.response.status}
+        });
+    }
 
-//     }
-// } 
+} ;
 
 // export const addEducation = (data, history)=> async dispatch =>{
 
