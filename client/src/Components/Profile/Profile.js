@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { getProfilefbyhandler } from "../Actions/profileAction"
+import { getProfilebyhandler } from "../Actions/profileAction"
 import Spinner from "../common/spinner"
 import { Link } from "react-router-dom"
 import About from "./About"
