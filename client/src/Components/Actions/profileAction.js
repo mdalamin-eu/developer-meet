@@ -144,6 +144,34 @@ export const deleteExperience = id => async dispatch => {
 
 } ;
 
+// Profile handler
+ export const getProfilebyhandler = handle => async dispatch => {
+     try {
+         const config = {
+             headers: {
+                 "Content-Type":"application/json"
+             }
+         };
+         dispatch(profileLoadingStart());
+         const res= await axios.get(`/api/profile/handle/${handle}`,config);
+
+         dispatch({
+             type: GET_PROFILE,
+             payload:res.data
+         });
+     }catch(err){
+        const errors= err.response.data.errors; 
+
+        if(errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+        }
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg:err.response.statusText, status: err.response.status}
+        })
+     }
+ }
+
 // export const deleteAccount = ( )=> async dispatch =>{
 // if (window.confirm("Are you sure? this can not undone")){
 //     try{
