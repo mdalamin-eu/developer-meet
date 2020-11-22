@@ -144,6 +144,18 @@ export const deleteExperience = id => async dispatch => {
 
 } ;
 
-// export const addEducation = (data, history)=> async dispatch =>{
+// export const deleteAccount = ( )=> async dispatch =>{
+// if (window.confirm("Are you sure? this can not undone")){
+//     try{
+//         const config ={
+//             headers:{
+//                 "Content-Type":"application/json"
+//             }
+//         };
+//         const res = await axios.delete("api/")
+//     } catch(err){
 
+//     }
 // }
+// }
+

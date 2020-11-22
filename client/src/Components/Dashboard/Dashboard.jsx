@@ -12,9 +12,9 @@ class Dashboard extends Component {
     componentDidMount(){ //life cycle hoks j data rendering korte sahojjo kore
         this.props.currentUserProfile();
     }
-    deleteAccount = ()=> {
-        this.props.deleteAccount();
-    };
+    // deleteAccount = ()=> {
+    //     this.props.deleteAccount();
+    // };
 
     render() {
         //distucring kortachi 
@@ -35,9 +35,9 @@ class Dashboard extends Component {
                         <ProfileAction/>
                         <Experience experience={profile.experience}/>
                         <Education education={profile.education}/>
-                        <button className="btn btn-danger" onClick={this.deleteAccount}>
+                        {/* <button className="btn btn-danger" onClick={this.deleteAccount}>
                             Account Delete
-                        </button>
+                        </button> */}
                     </div>
                     
             
