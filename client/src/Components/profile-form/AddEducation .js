@@ -81,7 +81,7 @@ class AddEducation extends Component {
                             <p className="lead text-center">
                                 Add your school or degree that you have had in the past or current 
                             </p>
-                            <small className= "d-block pb-3">*=requred fields</small>
+                            <small className= "d-block pb-3">*=requred fields</small>  
                             <form onSubmit={this.onSubmit}>
                                 <TextFieldGroup
                                 name="school_name"

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { currentUserProfile } from "../Actions/profileAction";
+import { currentUserProfile, deleteAccount } from "../Actions/profileAction";
 import Spinner from "../common/spinner";
 import ProfileAction from "../utlis/profileAction"
 import Experience from "./Experience"
@@ -12,6 +12,10 @@ class Dashboard extends Component {
     componentDidMount(){ //life cycle hoks j data rendering korte sahojjo kore
         this.props.currentUserProfile();
     }
+    deleteAccount = ()=> {
+        this.props.deleteAccount();
+    };
+
     render() {
         //distucring kortachi 
         const { user } = this.props.auth;
@@ -31,6 +35,9 @@ class Dashboard extends Component {
                         <ProfileAction/>
                         <Experience experience={profile.experience}/>
                         <Education education={profile.education}/>
+                        <button className="btn btn-danger" onClick={this.deleteAccount}>
+                            Account Delete
+                        </button>
                     </div>
                     
             
