@@ -36,12 +36,16 @@ class Profile extends Component {
                     <div className= "row"> {profileContent}</div>
                     {/* <Header profile={profile}/> */}
                     <About profile={profile}/>
-                    experience={profile.experience}
-                    education={profile.education}
+
+                    {/* experience={profile.experience}
+                    education={profile.education} */}
                 </div>
                 
             </div>
         )
     }
 }
-export default  Profile;
+const mapStateToProps = state=> ({
+    profile: state.profile
+});
+export default connect(mapStateToProps,{getProfilebyhandler}) (Profile);
