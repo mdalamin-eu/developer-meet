@@ -14,6 +14,7 @@ import jwt_decode from "jwt-decode";
 import Dashboard from './Components/Dashboard/Dashboard'
 import PrivateRoute from './Components/routing/PrivateRoute'
 import store from './store'
+import Profile from './Components/Profile/Profile'
 import CreateProfile from './Components/createProfile/createProfile';
 import AddExperience from './Components/profile-form/AddExperience'
 import AddEducation from "./Components/profile-form/AddEducation "
@@ -48,6 +49,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/auth/activate/:id" component={Activate}/>
+            <Route exact path= "/profile/:handle" component={Profile}/>
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard}/>
             </Switch>
