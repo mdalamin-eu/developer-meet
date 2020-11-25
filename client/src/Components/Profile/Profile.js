@@ -4,6 +4,7 @@ import { getProfilebyhandler } from "../Actions/profileAction"
 import Spinner from "../common/spinner"
 import { Link } from "react-router-dom"
 import About from "./About"
+import Header from './Headers'
 
 
 class Profile extends Component {
@@ -36,7 +37,7 @@ class Profile extends Component {
             <div className="profile">
                 <div className="container">
                     <div className= "row"> {profileContent}</div>
-                    {/* <Header profile={profile}/> */}
+                    <Header profile={profile}/>
                     <About profile={profile}/>
 
                     {/* experience={profile.experience}
