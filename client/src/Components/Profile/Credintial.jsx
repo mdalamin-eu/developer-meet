@@ -21,7 +21,7 @@ class Credintial extends Component {
             </li>
         ))
         return (
-            <div>
+            <div className="row">
                 
             </div>
         )
