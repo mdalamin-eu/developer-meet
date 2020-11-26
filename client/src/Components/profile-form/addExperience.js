@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react' //why Fragment?
+import React, { Component, Fragment } from 'react' 
 import TextFieldGroup from '../common/TextFieldGroup'
 import TextAreaField from '../common/TextAreaField'
 import {connect} from 'react-redux'

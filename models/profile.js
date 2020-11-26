@@ -1,7 +1,3 @@
-
-//Hey Mr. Miraz I have some questions . So please go down slowly and give my questions answer ): 
-
-
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const ProfileSchema = new mongoose. Schema({
@@ -22,14 +18,14 @@ website:{
     type: String
 },
 status:{
-    type: String,   //what is status?
+    type: String,   
     required: true
 },
 location:{
     type:String
 },
 skills:{
-    type: [String],  //why we use this []
+    type: [String],  
     required: true
 },
 bio:{
@@ -61,7 +57,7 @@ experience: [
 
         current: {
             type: Boolean,
-            default: false   //why default and false?
+            default: false   
         },
         description: {
             type: String
