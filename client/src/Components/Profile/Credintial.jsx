@@ -18,6 +18,21 @@ class Credintial extends Component {
                 <p>
                     <strong>Position:</strong> {exp.title}
                 </p>
+                <p>
+                    {exp.location === "" ? null : (
+                        <span>
+                            <strong>Location</strong> {exp.location}
+                        </span>
+                    )}
+                </p>
+
+                <p>
+                    {exp.description==="" ? null : (
+                        <span>
+                            <strong>Description: </strong> {exp.description}
+                        </span>
+                    )}
+                </p>
             </li>
         ))
         return (
