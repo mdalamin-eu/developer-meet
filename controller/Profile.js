@@ -226,7 +226,13 @@ exports.DeleteExp = async (req, res) =>{
 
   exports.handle = async (req, res) => {
       try {
-
+        const profile = await Profile.findOne({
+            handle: req.params.handle_name
+        }).populate("user",["name","avatar"]);
+        if(!profile) {
+            return res.status(404).json({msg:"Profile not found"});
+        };
+        res.json(profile);
       }
       catch(error) {
           return res.status(5000).json({msg:"Server errors"});
