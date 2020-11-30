@@ -222,3 +222,13 @@ exports.DeleteExp = async (req, res) =>{
       res.status(500).send("server error ED2")
     }
   }
+
+
+  exports.handle = async (req, res) => {
+      try {
+
+      }
+      catch(error) {
+          return res.status(5000).json({msg:"Server errors"});
+      }
+  }
