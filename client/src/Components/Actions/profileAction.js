@@ -127,6 +127,7 @@ export const deleteExperience = id => async dispatch => {
             }
         };
         const res = await axios.delete(`api/users/experience/${id}`, config);
+        
         dispatch({ type:GET_PROFILE,
         payload: res.data
     });
@@ -153,8 +154,8 @@ export const deleteExperience = id => async dispatch => {
              }
          };
          dispatch(profileLoadingStart());
-         const res= await axios.get(`api/user/handle/${handle}`,config);
-
+         const res= await axios.get(`api/users/handle${handle}`,config);
+         console.log("data of profile", res)
          dispatch({
              type: GET_PROFILE,
              payload:res.data
