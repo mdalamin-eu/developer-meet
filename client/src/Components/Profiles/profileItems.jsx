@@ -18,6 +18,10 @@ const ProfileItems = ({profile}) => {
                             <span>at {profile.company}</span>
                         ) }
                     </p>
+                    <p>
+                        {isEmpty(profile.location) ? null: <span>{profile.location}</span>  }
+                    </p>
+                        <Link>to={`/profile/${profile.handle}`} className="bth btn-info"> View Profile </Link>
                 </div>
             </div>
         </div>
