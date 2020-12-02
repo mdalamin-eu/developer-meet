@@ -173,6 +173,16 @@ export const deleteExperience = id => async dispatch => {
      }
  }
 
+//Get Profiles
+
+export const getProfiles = () => async dispatch=> {
+    try{
+
+    }catch (error){
+        
+    }
+}
+
 // export const deleteAccount = ( )=> async dispatch =>{
 // if (window.confirm("Are you sure? this can not undone")){
 //     try{
