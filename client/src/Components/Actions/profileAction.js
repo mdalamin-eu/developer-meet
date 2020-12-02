@@ -178,8 +178,8 @@ export const deleteExperience = id => async dispatch => {
 export const getProfiles = () => async dispatch=> {
     try{
 
-    }catch (error){
-        
+    }catch (err){
+
     }
 }
 
