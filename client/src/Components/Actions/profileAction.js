@@ -177,6 +177,14 @@ export const deleteExperience = id => async dispatch => {
 
 export const getProfiles = () => async dispatch=> {
     try{
+        const config={
+            headers:{
+                "Content-Type":"application/json"
+            }
+        };
+        dispatch(profileLoadingStart());
+        const res =await axios.get('api/users/', config);
+        
 
     }catch (err){
 
