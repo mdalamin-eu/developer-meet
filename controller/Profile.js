@@ -245,6 +245,7 @@ exports.profiles=async(req, res) => {
         const profiles = await Profile.find({}).populate("user",["name","avatar"]);
         res.json(profiles);
     }catch (error) {
-
+        
+        res.status(500).json({msg:"Server Error"});
     }
-}
+};
