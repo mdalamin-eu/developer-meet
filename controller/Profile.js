@@ -238,3 +238,13 @@ exports.DeleteExp = async (req, res) =>{
           return res.status(5000).json({msg:"Server errors"});
       }
   }
+
+  //Profiles
+exports.profiles=async(req, res) => {
+    try {
+        const profiles = await Profile.find({}).populate("user",["name","avatar"]);
+        res.json(profiles);
+    }catch (error) {
+
+    }
+}
