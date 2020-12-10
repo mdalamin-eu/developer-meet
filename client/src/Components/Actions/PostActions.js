@@ -54,7 +54,7 @@ export const postLike = id => async dispatch => {
         }
       };
   
-      const res = await axios.put(`/api/posts/like/${id}`, config);
+      const res = await axios.put(`api/posts/like/${id}`, config);
       dispatch({
         type: UPDATE_LIKES,
         payload: { id, likes: res.data }
