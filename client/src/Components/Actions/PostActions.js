@@ -18,6 +18,23 @@ export const startPostsLoading = () => dispatch => {
     });
 };
 
+export const getposts = () => async dispatch => {
+    try {
+        const config= {
+            headers: {
+                "Content-type": "application/json"
+            }
+        };
+        dispatch(startPostsLoading());
+        const res=await axios.get("api/posts", config)
+
+    } catch (err) {
+        const errors = err.response.data.errors;
+
+        
+    }
+}
+
 
 
 export const postLike = id => async dispatch => {
