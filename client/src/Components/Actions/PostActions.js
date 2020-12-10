@@ -27,13 +27,22 @@ export const getposts = () => async dispatch => {
         };
         dispatch(startPostsLoading());
         const res=await axios.get("api/posts", config)
-
+        dispatch({
+            type: GET_POSTS,
+            payload: res.data
+        })
     } catch (err) {
         const errors = err.response.data.errors;
 
-        
+        if( errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg,"danger")));
+        }
+        dispatch({
+            type: POSTS_ERROR,
+            payload: {msg: err.response.statusText, status: err.response.status}
+        });
     }
-}
+};
 
 
 
