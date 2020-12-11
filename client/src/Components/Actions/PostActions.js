@@ -18,6 +18,7 @@ export const startPostsLoading = () => dispatch => {
     });
 };
 
+//get Post
 export const getposts = () => async dispatch => {
     try {
         const config= {
@@ -45,7 +46,7 @@ export const getposts = () => async dispatch => {
 };
 
 
-
+//Post Like
 export const postLike = id => async dispatch => {
     try {
       const config = {
@@ -61,3 +62,17 @@ export const postLike = id => async dispatch => {
       });
     } catch (error) {}
   };
+
+  //Delete Post
+
+  export const  deletePost = id = async dispatch=> {
+try{
+    const config = {
+        headers: {
+            "Content-Type":"application/json"
+        }
+    };
+} catch (err) {
+
+}
+  }
