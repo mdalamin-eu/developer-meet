@@ -72,7 +72,20 @@ try{
             "Content-Type":"application/json"
         }
     };
+    const res = axios.delete(`api/posts/${id}`, config);
+    dispatch({
+        type:DELETE_POST,
+        payload: id
+    })
+    dispatch(setAlert("Your post successfully deleted", "success"));
 } catch (err) {
-
+const errors = err.response.data.errors;
+if(errors) {
+    errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+}
+dispatch({
+    type: POSTS_ERROR,
+    payload: {msg:err.response.statusText, status: err.response.status}
+});
 }
   }
