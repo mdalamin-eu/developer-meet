@@ -37,8 +37,9 @@ import classnames from "classnames";
                             alt="user profile"
                             />
                         </Link>
-                        
+
                         <br />
+                <div className="text-center">{post.name }</div>
 
                     </div>
                 </div> 
