@@ -20,7 +20,7 @@ class Profile extends Component {
         
         let profileContent;
 
-        if(profile ===null || loading ) {
+        if(profile === null || loading ) {
             return ( profileContent = <Spinner/>);
         } else {
             profileContent = (
