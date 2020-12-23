@@ -19,6 +19,11 @@ import { addPost } from "../Actions/PostActions"
              })
          );
      };
+     onChange= e => {
+         this.setState({
+             [e.target.name]:e.target.value
+         });
+     };
     render() {
         return (
             <div>
