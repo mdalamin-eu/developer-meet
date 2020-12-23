@@ -92,8 +92,17 @@ dispatch({
 
   export const addPost = fromData => async dispatch=> {
       try {
-
+        const  config = {
+            headers: {
+                "content-Type":"application/json"
+            }
+        };
+        const res = await axios.post("/api/posts", fromData);
+        dispatch({
+            type: ADD_POST,
+            payload: res.data
+        });
       }catch(err){
-          
+
       }
   }
