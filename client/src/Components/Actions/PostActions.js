@@ -89,3 +89,11 @@ dispatch({
 });
 }
   }
+
+  export const addPost = fromData => async dispatch=> {
+      try {
+
+      }catch(err){
+          
+      }
+  }
