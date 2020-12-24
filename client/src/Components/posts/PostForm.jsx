@@ -26,6 +26,7 @@ import { addPost } from "../Actions/PostActions"
      };
     render() {
         return (
+            
             <div>
                 
             </div>
