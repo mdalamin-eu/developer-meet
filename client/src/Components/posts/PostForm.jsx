@@ -25,10 +25,27 @@ import { addPost } from "../Actions/PostActions"
          });
      };
     render() {
+        const { text } = this.state;
         return (
-            
-            <div>
-                
+             <div className="post-form mb-3">
+                 <div className="card card-info">
+                     <div className="card-header bg-info">Say something</div>
+                    <div onSubmit={this.onSubmit}>
+                        <div className="card-body">
+                            <div className="form-group">
+                                <TextAreaField
+                                name="text"
+                                value={text}
+                                placeholder="Text"
+                                onChange={this.onChange}
+                                />
+                                <button type="submit" className="btn btn-dark">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
             </div>
         )
     }
