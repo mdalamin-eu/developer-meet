@@ -39,8 +39,36 @@ import classnames from "classnames";
                         </Link>
 
                         <br />
-                <div className="text-center">{post.name }</div>
+                <p className="text-center">{post.name }</p>
 
+                    </div>
+                    <div className="col-md-10">
+                    <p className="lead"> {Post.text} </p>
+                    {showAction ? (
+                        <span>
+                            <button onClick={() =>this.onLikeClick(post._id)}
+                            type="button"
+                            className="btn btn-light mr-1"
+                            >
+                                <i
+                                className={classNames("fas fa-thumbs-up",{
+                                    "text-info": this.findUserLike(post.likes)
+                                })}
+                                />
+                                <span className="bdge bdge-light">
+                                    {post.likes.length> 0 && <spa> {post.likes.length} </spa> }
+                                </span>
+                            </button>
+                                <button
+                                type="button"
+                                className="btn btn-light mr-1"
+                                onClick={() => this.onUnlikeClick(post._id)}
+                                disabled={!this.findUserLike(post.likes)}
+                                >
+
+                                </button>
+                        </span>
+                    )}
                     </div>
                 </div> 
             </div>
