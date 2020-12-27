@@ -87,4 +87,13 @@ import classnames from "classnames";
         )
     }
 }
-export default PostItem
+PostItem.defaultProps = {
+    showActions : true
+};
+const mapStateProps = state => ({
+    auth: state.auth
+})
+
+export default connect(
+    mapStateProps, {postLike, unLikePost, deletePost }
+) (PostItem);
