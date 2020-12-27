@@ -65,10 +65,22 @@ import classnames from "classnames";
                                 onClick={() => this.onUnlikeClick(post._id)}
                                 disabled={!this.findUserLike(post.likes)}
                                 >
-
+                                    <i className="text-secondary fas fa-thumbs-down"/>
                                 </button>
+                                <Link to={`post/${post.id}`} className="btn btn-info mr-1">
+                                    Comments
+                                </Link>
+                                {!auth.loading && post.user === auth.user.id ? (
+                                    <button
+                                    onClick={() => this.postDelete(post._id)}
+                                    type="button"
+                                    className="btn btn-danger mr-1"
+                                    >
+                                    <i className="fas fa-times" />
+                                    </button>
+                                 ) : null}
                         </span>
-                    )}
+                    ) : null}
                     </div>
                 </div> 
             </div>
