@@ -40,4 +40,4 @@ class Posts extends Component {
 const mapStateToProps = state =>  ({
     post:state.post
 })
-export default  (Posts)
+export default connect (mapStateToProps, {getposts}) (Posts)
