@@ -12,7 +12,7 @@ class Posts extends Component {
     render(){
         const { posts, loading } = this.props.post;
         let postsContent;
-        
+
         if (posts === null && loading){
             postsContent = <Spinner />;
         } else {
@@ -24,10 +24,20 @@ class Posts extends Component {
         }
     
         return (
-            <div>
-                
+            <div className= "feed">
+                <div className= "container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <PostForm/>
+                            { postsContent}
+                        </div>
+                    </div>
+                </div>
             </div>
-        )
+        );
     }
 }
+const mapStateToProps = state =>  ({
+    post:state.post
+})
 export default  (Posts)
