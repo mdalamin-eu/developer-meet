@@ -9,7 +9,18 @@ class CommmentItem extends Component {
     render() {
         const { comment, postId, auth } = this.props;
         return (
-            <div>
+            <div className="card card-body mb-3">
+                <div className="row">
+                    <div className="col-mb-2">
+                        <img 
+                        src= {comment && comment.avatar}
+                        className="rounded-circle d-none d-mb-block"
+                        alt="user photos"
+                        />
+
+                        <br/>
+                    </div>
+                </div>
                 
             </div>
         )
