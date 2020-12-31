@@ -19,6 +19,11 @@ class CommmentItem extends Component {
                         />
 
                         <br/>
+
+                    <p className= "text-center">{ comment && comment.name}</p>
+                    </div>
+                    <div className="col-md-10">
+                        <p className="lead">  </p>
                     </div>
                 </div>
                 
