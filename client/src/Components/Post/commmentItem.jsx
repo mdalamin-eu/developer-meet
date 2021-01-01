@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { commentDelete } from "../Actions/PostActions"
 
 class CommmentItem extends Component {
-    onDeleteComment = { postId, id} => {
+    onDeleteComment = (postId, id) => {
         this.props.commentDelete(postId, id);
     };
     render() {
