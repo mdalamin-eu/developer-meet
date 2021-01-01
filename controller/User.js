@@ -190,7 +190,7 @@ exports.registeractivate= async(req, res)=>{
 
 
 
-//LoginFrom 
+//LoginForm 
 
 exports.Login = async (req, res)=>{
   const {email, password} = req.body
@@ -242,6 +242,11 @@ try {
   res.status(500).json({msg:"Server Errors"})
 }
 }
+
+
+//resetPassword
+
+
 exports.resetpasswordemailsend= 
 async (req, res) => {
   const errors = validationResult(req);
