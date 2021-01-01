@@ -23,7 +23,16 @@ class CommmentItem extends Component {
                     <p className= "text-center">{ comment && comment.name}</p>
                     </div>
                     <div className="col-md-10">
-                        <p className="lead">  </p>
+                        <p className="lead">{comment && comment.text}</p>
+                        {!auth.loading && comment.user === auth.user.id ? (
+                            <button
+                            type="submit"
+                            className="btn btn-danger mr-1"
+                            onClick={()=> this.onDeleteComment(postId, comment._id)}>
+                                <i className="fas fa-times"/>
+
+                            </button>
+                        ):null}
                     </div>
                 </div>
                 
@@ -31,4 +40,7 @@ class CommmentItem extends Component {
         )
     }
 }
-export default  (CommmentItem)
+const mapStateToProps = state=> ({
+    auth: state.auth
+});
+export default connect(mapStateToProps, {commentDelete})  (CommmentItem)
