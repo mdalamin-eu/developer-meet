@@ -234,6 +234,8 @@ exports.Login = async (req, res)=>{
 
   }
 }
+
+//current user
 exports.auth =  async (req, res)=>{
 try {
   const user = await User.findById(req.currentuser.id)
