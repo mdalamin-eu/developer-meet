@@ -1,8 +1,6 @@
 const express = require("express");
-const router = express.Router();
 const Auth = require("../middleware/authguard")
 const Profile = require("../models/Profile");
-const School = require('../models/Schools')
 const User = require("../models/User")
 const { check, validationResult}= require("express-validator/check")
 
