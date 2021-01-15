@@ -106,3 +106,13 @@ dispatch({
 
       }
   }
+
+  export  const addComment = (postId, fromData) => async dispatch => {
+      try {
+          const config = {
+              headers: {
+                  "Content-Type":"application/json"
+              }
+          }
+      }
+  }

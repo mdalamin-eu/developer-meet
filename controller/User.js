@@ -337,7 +337,7 @@ exports.resetpassword= async(req, res)=>{
       existUser.set({password:haspassword})
       console.log('after set', existUser)
     existUser.save((err, newdata=>{
-         if(err){
+         if(err){       
            res.send(err)
        console.log(err)
          }
