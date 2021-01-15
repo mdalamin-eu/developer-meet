@@ -113,6 +113,11 @@ dispatch({
               headers: {
                   "Content-Type":"application/json"
               }
-          }
+          };
+          const res = await axios.post(
+              `/api/posts/comment/${postId}`,
+              fromData,
+              config
+          )
       }
   }
