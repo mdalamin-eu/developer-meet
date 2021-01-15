@@ -118,6 +118,10 @@ dispatch({
               `/api/posts/comment/${postId}`,
               fromData,
               config
-          )
-      }
-  }
+          );
+          dispatch({
+              type:ADD_COMMENT,
+              payload:res.data
+          })
+      } catch (error) {}
+  };
