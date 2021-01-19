@@ -145,6 +145,28 @@ export const deleteExperience = id => async dispatch => {
 
 } ;
 
+export const deleteEducation = id => async dispatch => {
+    try {
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+        const res = await axios.delete(`/api/profile/education/${id}`, config)
+        dispatch({
+            type:GET_PROFILE,
+            payload: res.data
+        });
+        dispatch (setAlert("Successfully Deleted education","success"));
+    } catch (err) {
+        const errors = err.response.data.errors;
+
+        if (errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+        }
+    }
+}
+
 // Profile handler //////////////////////////////////////////////
 //////////////////////////////////////////
  export const getProfilebyhandler = handle => async dispatch => {
