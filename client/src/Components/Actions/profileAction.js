@@ -229,18 +229,25 @@ export const getProfiles = () => async dispatch=> {
     }
 };
 
-// export const deleteAccount = ( )=> async dispatch =>{
-// if (window.confirm("Are you sure? this can not undone")){
-//     try{
-//         const config ={
-//             headers:{
-//                 "Content-Type":"application/json"
-//             }
-//         };
-//         const res = await axios.delete("api/")
-//     } catch(err){
+export const deleteAccount = ( )=> async dispatch =>{
+if (window.confirm("Are you sure? this can not undone")){
+    try{
+        const config ={
+            headers:{
+                "Content-Type":"application/json"
+            }
+        };
+        const res = await axios.delete("api/profile", config);
+        dispatch({
+            type:CLEAR_ACCOUNT
+        });
+        dispatch({
+            type: ACCOUNT_DELETE
+        });
+        dispatch(setAlert())
+    } catch(err){
 
-//     }
-// }
-// }
+    }
+}
+}
 
