@@ -32,6 +32,13 @@ class EditProfile extends Component {
 
             const skillsCSV = !isEmpty(profile.skills) ? profile.skills.join (",") : "" ;
 
+            profile.company =! isEmpty(profile.company) ? profile.company : "";
+            profile.website = ! isEmpty(profile.website) ? profile.website : "";
+            profile.location = ! isEmpty(profile.location) ? profile.location : "";
+            profile.githubusername = ! isEmpty(profile.githubusername) ? profile.githubusername : "";
+            profile.bio = ! isEmpty(profile.bio) ? profile.bio : "";
+            profile.social = ! isEmpty(profile.social) ? profile.social : { };
+
         }
     }
 }
