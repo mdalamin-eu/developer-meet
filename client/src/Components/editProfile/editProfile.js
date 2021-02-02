@@ -55,8 +55,9 @@ class EditProfile extends Component {
                 facebook: profile.facebook,
                 twitter: profile.twitter,
                 youtube:profile.youtube,
-                
-            })
+                linkedin: profile.linkedin,
+                instagram:profile.instagram
+            });
 
         }
     }
