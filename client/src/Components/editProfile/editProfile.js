@@ -44,7 +44,19 @@ class EditProfile extends Component {
             profile.instagram= ! isEmpty(profile.social.instagram) ? profile.social.instagram : "";
             profile.linkedin = ! isEmpty(profile.social.linkedin) ? profile.social.linkedin : "";
 
-            
+            this.setState({
+                company : profile.company,
+                website: profile.website,
+                location: profile.location,
+                bio : profile.bio,
+                skills : skillsCSV,
+                githubusername: profile.githubusername,
+                status: profile.status,
+                facebook: profile.facebook,
+                twitter: profile.twitter,
+                youtube:profile.youtube,
+                
+            })
 
         }
     }
