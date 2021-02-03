@@ -19,6 +19,7 @@ class EditProfile extends Component {
         linkedin: "",
         youtube: "",
         instagram: "",
+        snapchat:"",
         errors: {}
     };
 
@@ -43,6 +44,7 @@ class EditProfile extends Component {
             profile.youtube= ! isEmpty(profile.social.youtube) ? profile.social.youtube : "" ;
             profile.instagram= ! isEmpty(profile.social.instagram) ? profile.social.instagram : "";
             profile.linkedin = ! isEmpty(profile.social.linkedin) ? profile.social.linkedin : "";
+            profile.snapchat = ! isEmpty(profile.social.snapchat) ? profile.social.snapchat : "";
 
             this.setState({
                 company : profile.company,
@@ -56,7 +58,8 @@ class EditProfile extends Component {
                 twitter: profile.twitter,
                 youtube:profile.youtube,
                 linkedin: profile.linkedin,
-                instagram:profile.instagram
+                instagram:profile.instagram,
+                snapchat: profile.snapchat
             });
 
         }
