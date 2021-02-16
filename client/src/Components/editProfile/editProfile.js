@@ -69,6 +69,37 @@ class EditProfile extends Component {
             [e.target.name] : e.target.value
         });
     };
+
+    onSubmit = e => {
+        e.preventDefault();
+        const {
+            company,
+            website,
+            status,
+            skills,
+            location,
+            bio,
+            githubusername,
+            facebook,
+            twitter,
+            instagram,
+            youtube
+        } = this.state;
+        const createProfileData = {
+            company,
+            website,
+            status,
+            skills,
+            location,
+            bio,
+            githubusername,
+            facebook,
+            twitter,
+            instagram,
+            youtube
+        };
+        
+    }
 }
 
 render() {
