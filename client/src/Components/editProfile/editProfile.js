@@ -98,7 +98,7 @@ class EditProfile extends Component {
             instagram,
             youtube
         };
-        
+        this.props.createProfile(createProfileData, this.props.history, true)
     }
 }
 
