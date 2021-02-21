@@ -22,6 +22,7 @@ class EditProfile extends Component {
         snapchat:"",
         errors: {}
     };
+    Alaminakhi2020
 
     componentDidMount() {
         this.props.currentUserProfile();
@@ -98,11 +99,14 @@ class EditProfile extends Component {
             instagram,
             youtube
         };
-        this.props.createProfile(createProfileData, this.props.history, true)
-    }
+        this.props.createProfile(createProfileData, this.props.history, true);
+    };
 }
 
 render() {
-    
+    console.log(this.state);
+    const {
+        errors,
+    }
 }
 return()
