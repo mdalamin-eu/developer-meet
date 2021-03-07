@@ -107,6 +107,19 @@ render() {
     console.log(this.state);
     const {
         errors,
-    }
+        displaySocialInouts,
+        status,
+        company,
+        website,
+        location,
+        bio,
+        skills,
+        twitter,
+        facebook,
+        instagram,
+        youtube,
+        snapchat,
+        githubusername
+    } = this.state;
 }
 return()
