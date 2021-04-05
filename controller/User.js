@@ -24,11 +24,8 @@ AWS.config.update({
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-  
-
     const { name, email, password, phone, birthdate} = req.body;
     
-
     try {
       let user = await User.findOne({ email });
 
@@ -61,7 +58,8 @@ AWS.config.update({
           expiresIn:'5h'
         })
            //Send email
-           const params = registerUserEmail(token, email)         
+           const params = registerUserEmail(token, email) 
+           console.log('register params', params)        
            const sendEmailOnRegister = ses.sendEmail(params).promise();
            sendEmailOnRegister.then(data => {
            

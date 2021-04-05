@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from "react-router-dom";
 import Axios from 'axios'
  class Activate extends Component {
      componentDidMount(){
@@ -9,12 +10,16 @@ import Axios from 'axios'
          const token = this.props.match.params.id
          Axios.post(`http://localhost:3000/api/users/activate`,{token})
          .then(response=>{
-             console.log(response.data);
+           
+                return <Redirect to="/dashboard" />;
+              
          })
      }
 
     render() {
+
         return (
+            
             <div className="App">
                 <header>
                    Please activate your account
