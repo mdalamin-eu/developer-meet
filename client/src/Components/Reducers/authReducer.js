@@ -1,6 +1,6 @@
 import { REGISTER_SUCCESS,
                 LOGIN_SUCCESS,
-                USER_LOADED} from '../Actions/Types';
+                USER_LOADED, REGISTER_SEND_EMAIL} from '../Actions/Types';
 import isEmpty from '../utlis/isEmpty'
 import setAuthToken from '../utlis/setAuthToken';
 
@@ -11,8 +11,8 @@ export default  function(state= initialState, action) {
    const { payload, type } = action;
    console.log('payload',payload)
    switch(type){
-    // case REGISTER_SEND_EMAIL:
-    //     return{...state, ...payload, loading:false}; 
+    case REGISTER_SEND_EMAIL:
+        return{...state, ...payload, loading:false}; 
     case REGISTER_SUCCESS:
            case LOGIN_SUCCESS:
            localStorage.setItem("jwtToken", payload.token);

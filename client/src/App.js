@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css"
 import Landing from './Components/layout/Landing'
 import Activate from './Components/Auth/activate'
+import Notification from './Components/Dashboard/notification'
 import Footer from './Components/layout/footer'
 import Navbar from './Components/layout/Navbar'
 import Register from './Components/Auth/register'
@@ -49,6 +50,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/auth/activate/:id" component={Activate}/>
+            <Route exact path="/notification" component={Notification}/>
             <Route exact path= "/profile/:handle" component={Profile}/>
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard}/>
