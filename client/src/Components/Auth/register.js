@@ -37,7 +37,7 @@ class Register extends Component {
   render() {
  
     const { name, email, password, password2 } = this.state;
-    if (this.props.auth.isAuthenticated) {
+    if (this.props.auth.isEmailSend) {
       return <Redirect to="/notification" />;
     }
     return (

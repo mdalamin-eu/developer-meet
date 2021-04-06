@@ -1,6 +1,6 @@
 import axios from "axios";
 import {REGISTER_SUCCESS,  REGISTER_FAIL,
-                LOGIN_FAIL, LOGIN_SUCCESS , USER_LOADED, AUTH_ERROR} from './Types'
+                LOGIN_FAIL, LOGIN_SUCCESS , USER_LOADED, AUTH_ERROR, REGISTER_SEND_EMAIL} from './Types'
 import { setAlert } from "./alert";
 import setAuthToken from "../utlis/setAuthToken"
 
@@ -35,7 +35,7 @@ headers:{
 try{
 const res = await axios.post('api/users/register', userData, config);
 dispatch({
-    type: REGISTER_SUCCESS,
+    type: REGISTER_SEND_EMAIL,
     payload: res.data
 });
 }catch(error){

@@ -12,11 +12,11 @@ export default  function(state= initialState, action) {
    console.log('payload',payload)
    switch(type){
     case REGISTER_SEND_EMAIL:
-        return{...state, ...payload, loading:false}; 
-    case REGISTER_SUCCESS:
-           case LOGIN_SUCCESS:
-           localStorage.setItem("jwtToken", payload.token);
-           return{...state, ...payload, isAuthenticated:true, loading:false};
+        return{...state, ...payload, loading:false, isEmailSend:true}; 
+    // case REGISTER_SUCCESS:
+    //        case LOGIN_SUCCESS:
+    //        localStorage.setItem("jwtToken", payload.token);
+    //        return{...state, ...payload, isAuthenticated:true, loading:false};
 
        case REGISTER_SUCCESS:
            case LOGIN_SUCCESS:
