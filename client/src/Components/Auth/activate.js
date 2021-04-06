@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Redirect } from "react-router-dom";
 import Axios from 'axios'
  class Activate extends Component {
+    state = {
+        token: ""
+    };
      componentDidMount(){
 
      }
@@ -18,6 +21,10 @@ import Axios from 'axios'
 
     render() {
 
+        const { token } = this.state;
+        if (token) {
+            return <Redirect to="/dashboard" />;
+          }
         return (
             
             <div className="App">
