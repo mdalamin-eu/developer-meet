@@ -155,8 +155,6 @@ exports.registeractivate= async(req, res)=>{
         name, email, phone,  password, avatar, birthdate
       })
       
-      
-      
       user.save((err, newUser=>{
         if(err){
           res.send(err)
@@ -167,9 +165,14 @@ exports.registeractivate= async(req, res)=>{
         const payload = { id: user.id, name: user.name, avatar: user.avatar, email:user.email }; //create jwt
 
         jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 360000 }, (err, token) => {
-          if (err) throw err;
-          res.json({ 
-            'message':'You are registerd',
+          // if (err) throw err;
+          // res.json({ 
+            if(err){
+              console.log(err)
+            }
+            return res.status(200).send({
+            'message':'You are registerd', 
+            'activate':'true',
             token
            });
         });
