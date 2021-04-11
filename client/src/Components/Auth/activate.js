@@ -21,6 +21,16 @@ import Axios from 'axios'
               
          })
      }
+    //  onSubmit = e => {
+    //     e.preventDefault();
+
+    //     const { token } = this.state;
+    //     const userData = {
+    //         token
+    //     };
+        
+    //     this.props. isActivated{return <Redirect to="/dashboard" />;
+    // };
 
     render() {
         toast.configure({

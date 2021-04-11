@@ -42,7 +42,8 @@ export const createProfile = (profileData, history, isEdit= false) => async disp
            type: GET_PROFILE,
            payload: res.data
        });
-       dispatch( setAlert (isEdit ? "Profile Update" : "Profile Created", "success") );
+       dispatch( 
+           setAlert (isEdit ? "Profile Update" : "Profile Created", "success") );
        if(!isEdit){
            return history.push("/dashboard");
        }

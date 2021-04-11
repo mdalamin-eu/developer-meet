@@ -1,4 +1,4 @@
-import { GET_PROFILE, PROFILE_ERROR, PROFILE_LOADING_START} from '../Actions/Types';
+import { GET_PROFILE, PROFILE_ERROR, PROFILE_LOADING_START,} from '../Actions/Types';
 
 const initialState = {
     profile:null,

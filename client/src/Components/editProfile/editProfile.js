@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import TextFieldGroup from "../common/TextFieldGroup";
 import InputGroup from "../common/inputGroup";
+import TestAreaFieldGroup from '../common/TextAreaField';
+import SelectListGroup from '../common/SelectListGroup';
+import {createProfile, currentUserProfile} from '../Actions/profileAction';
+import isEmpty from '../utlis/isEmpty';
 
 class EditProfile extends Component {
     state = {
