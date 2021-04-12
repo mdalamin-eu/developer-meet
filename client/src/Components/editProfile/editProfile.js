@@ -26,7 +26,7 @@ class EditProfile extends Component {
         snapchat:"",
         errors: {}
     };
-    Alaminakhi2020
+   
 
     componentDidMount() {
         this.props.currentUserProfile();
@@ -105,7 +105,7 @@ class EditProfile extends Component {
         };
         this.props.createProfile(createProfileData, this.props.history, true);
     };
-}
+
 
 render() {
     console.log(this.state);
@@ -125,5 +125,28 @@ render() {
         snapchat,
         githubusername
     } = this.state;
+    let socialInputs;
+    if( displaySocialInouts) {
+        socialInputs= (
+            <div>
+                <InputGroup
+                placeholder="Twitter profile URL"
+                name= "twitter"
+                value={twitter}
+                icon="fab fa-twitter"
+                onChange={this.onChange}
+                error={errors.twitter}
+                />
+                <InputGroup
+                name="facebook"
+                placeholder="Facebook Profile URL"
+                value={facebook}
+                icon="fab fa-facebook"
+                onChange={this.onChange}
+                error={errors.facebook}
+                />
+        )
+    }
 }
 return()
+}
