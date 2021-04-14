@@ -145,6 +145,32 @@ render() {
                 onChange={this.onChange}
                 error={errors.facebook}
                 />
+                <InputGroup
+                name="youtube"
+                placeholder="Youtube Profile URL"
+                value={youtube}
+                icon="fab fa-youtube"
+                onChange={this.onChange}
+                error={errors.youtube}
+                />
+
+                <InputGroup
+                name="instagram"
+                placeholder="Instagram Profile URL"
+                value={instagram}
+                onChange={this.onChange}
+                error={errors.instagram}
+                icon="fab fa-instagram"
+                />
+
+                <InputGroup
+                name="snapchat"
+                placeholder="Snapchat Profile URL"
+                value={snapchat}
+                onChange={this.onChange}
+                error={errors.snapchat}
+                icon="fab fa-instagram"
+                />
         )
     }
 }
