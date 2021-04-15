@@ -186,7 +186,39 @@ render() {
 
 
 return(
-    <div >
+    <div className="create-profile" >
+        <div className="container">
+            <div className="row">
+                <div className="col-md-8 m-auto">
+                    <h1 className="display-4 text-center">Edit your profile </h1>
+                    <p className="lead text-center">
+                        Let's get some information to make your profile stand out
+                    </p>
+                    <small className="d-block pb-3">*=required filed</small>
+                    <form onSubmit={this.onSubmit}>
+                        <SelectListGroup
+                        name="status"
+                        value={status}
+                        placeholder="Status"
+                        options={options}
+                        onChange={this.onChange}
+                        info="Select Status"
+                        error={errors.company}
+                        />
+
+                        <SelectListGroup
+                        name="company"
+                        placeholder="Company name"
+                        value={company}
+                        info="could be your own company or you work for one"
+                        error={errors.company}
+                        onChange={this.onChange}
+                        />
+
+                    </form>
+                </div>
+            </div>
+        </div>
 
     </div>
 )
