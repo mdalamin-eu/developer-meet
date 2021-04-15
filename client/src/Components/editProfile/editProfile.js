@@ -171,8 +171,24 @@ render() {
                 error={errors.snapchat}
                 icon="fab fa-instagram"
                 />
-        )
+                </div>
+        );
     }
+    const options = [
+        {label: "*Select Professional Status", value:0},
+        {label: "Developer", value:"Developer"},
+        {lable: "Junior Developer", value:"Junior Developer"},
+        {lable: "Manager", value:"manager"},
+        {label: "Student or Learning", value:"Student or Learning"},
+        {label: "Instructor or Teacher", value: "Instructor or Teacher"},
+        {label:"Intern", value:"Intern"}
+    ];
+
+
+return(
+    <div >
+
+    </div>
+)
 }
-return()
 }
