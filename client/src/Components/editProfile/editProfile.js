@@ -206,13 +206,31 @@ return(
                         error={errors.company}
                         />
 
-                        <SelectListGroup
+                        <TextFieldGroup
                         name="company"
                         placeholder="Company name"
                         value={company}
                         info="could be your own company or you work for one"
                         error={errors.company}
                         onChange={this.onChange}
+                        />
+
+                        <TextFieldGroup
+                        name= "website"
+                        placeholder="Website"
+                        value={website}
+                        info="Could be your own website or company"
+                        error={errors.website}
+                        onChange={this.onChange}
+                        />
+
+                        <TextFieldGroup
+                        name="location"
+                        placeholder="Location"
+                        value={location}
+                        onChange={this.onChange}
+                        info="info(eg. Helsinki)"
+                        error={errors.location}
                         />
 
                     </form>
