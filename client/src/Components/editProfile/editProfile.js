@@ -232,6 +232,38 @@ return(
                         info="info(eg. Helsinki)"
                         error={errors.location}
                         />
+                        <TextFieldGroup
+                        name="skills"
+                        placeholder="Skills"
+                        value={skills}
+                        onChange={this.onChange}
+                        error={errors.skills}
+                        placeholder="Skills"
+                        info="Please use comma separated values(eg, HTML, Python, JavaScript)"
+                        />
+
+                        <TextFieldGroup
+                        name="githubusername"
+                        placeholder="Github Username"
+                        value={githubusername}
+                        error={errors.githubusername}
+                        onChange={this.onChange}
+                        info="Tell us a little about yourself"
+                        />
+
+                        <div className="mb-3">
+                            <button
+                            type="button"
+                            onClick={()=>{
+                                this.setState(prevState=>({
+                                    displaySocialInouts: !prevState.displaySocialInouts
+                                }));
+                            }}
+                            className="btn btn-light"
+                            >
+                                Add social networks links
+                            </button>
+                        </div>
 
                     </form>
                 </div>
