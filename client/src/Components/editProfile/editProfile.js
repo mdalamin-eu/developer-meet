@@ -263,14 +263,26 @@ return(
                             >
                                 Add social networks links
                             </button>
+                            <span className="text-muted">Optional</span>
                         </div>
-
+                        {socialInputs}
+                        <input
+                        type="submit"
+                        value="submit"
+                        className="btn btn-info btn-block mt-4"
+                        />
                     </form>
                 </div>
             </div>
         </div>
 
     </div>
-)
+);
 }
 }
+
+const mapStateToProps= state => ({
+    profile:state.profile
+});
+
+export default connect(mapStateToProps, {createProfile,currentUserProfile})(withRouter(EditProfile));
