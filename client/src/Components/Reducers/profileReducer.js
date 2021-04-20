@@ -1,4 +1,4 @@
-import { GET_PROFILE, PROFILE_ERROR, PROFILE_LOADING_START,} from '../Actions/Types';
+import { GET_PROFILE, PROFILE_ERROR, PROFILE_LOADING_START, UPDATE_PROFILE,} from '../Actions/Types';
 
 const initialState = {
     profile:null,
@@ -14,6 +14,7 @@ export default function(state= initialState, action){
                 loading: true 
             };
             case GET_PROFILE:
+            csse UPDATE_PROFILE:
                 return{
                     ...state,
                     profile:payload,
