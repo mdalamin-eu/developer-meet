@@ -29,7 +29,7 @@ check('birthdate')
     check('phone')
     .not()
     .isEmpty()
-    .withMessage('Password should not be empty')
+    .withMessage('Phone number should not be empty')
     .isLength({min:10})
     .withMessage('Must be Phone at least 10 number')
 
