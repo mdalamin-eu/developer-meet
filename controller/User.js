@@ -70,7 +70,7 @@ AWS.config.update({
               }).catch(error =>{
                   console.log('Ses email on register', error);
                  res.json({
-                   message:'sorry We could not veryfiy your email'
+                   message:'sorry, We could not veryfiy your email'
                  })
               
                 })

@@ -10,7 +10,6 @@ module.exports = (req, res, next) => {
             msg:"No token, authorization denied"
         })
     }
-
    // Verify token
   try {
     
